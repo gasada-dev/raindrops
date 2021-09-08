@@ -347,4 +347,103 @@ template {
 [hidden] {
   display: none;
 }
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.main .main__game {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main .main__calc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main .main__calc .calc {
+  height: 500px;
+  width: 325px;
+  background-color: #6771fae0;
+  border-radius: 20px;
+}
+
+.main .main__calc .calc .calc__grid {
+  padding: 20px 10px;
+  display: -ms-grid;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  -ms-grid-rows: (1fr)[5];
+      grid-template-rows: repeat(5, 1fr);
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  row-gap: 5px;
+  -webkit-column-gap: 3px;
+          column-gap: 3px;
+}
+
+.main .main__calc .calc .calc__grid .btn {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.main .main__calc .calc .calc__grid .display {
+  color: #000000;
+  background-color: #704e4e;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 5;
+  text-align: right;
+  font-size: 40px;
+  padding: 15px 5px;
+}
+
+.main .main__calc .calc .calc__grid .zero {
+  -ms-grid-row: 5;
+      grid-row-start: 5;
+  grid-row-end: 6;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.main .main__calc .calc .calc__grid .result {
+  -ms-grid-row: 4;
+      grid-row-start: 4;
+  grid-row-end: 6;
+  -ms-grid-column: 4;
+      grid-column-start: 4;
+  grid-column-end: 5;
+}
+
+.main .main__calc .calc .calc__grid .clear {
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  grid-row-end: 4;
+  -ms-grid-column: 4;
+      grid-column-start: 4;
+  grid-column-end: 5;
+}
 /*# sourceMappingURL=style.css.map */

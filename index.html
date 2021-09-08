@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
   <title>raindrops</title>
 </head>
@@ -12,19 +15,33 @@
 <body>
   <header class="header"></header>
   <main class="main">
-    <div class="main--game">
+    <div class="main__game">
       <div class="spawn"></div>
       <div class="game"></div>
     </div>
-    <div class="main--calc">
+    <div class="main__calc">
       <div class="score"></div>
-      <div class="calc"></div>
-    </div>
+      <div class="calc">
+        <div class="calc__grid">
+          <input disabled type="text" class="display" id="display" value="0"></input>
+          <button type="button" class="btn number">7</button>
+          <button type="button" class="btn number">8</button>
+          <button type="button" class="btn number">9</button>
+          <button type="button" class="btn clear" id="c">Clear</button>
+          <button type="button" class="btn number">4</button>
+          <button type="button" class="btn number">5</button>
+          <button type="button" class="btn number">6</button>
+          <button type="button" class="btn number">1</button>
+          <button type="button" class="btn number">2</button>
+          <button type="button" class="btn number zero" id="zero">0</button>
+          <button type="button" class="btn number">3</button>
+          <button type="button" class="btn delete" id="delete">Delete</button>
+          <button type="button" class="btn operation result" id="result">Enter</button>
+        </div>
+      </div>
   </main>
-  <footer class="footer">
-
-  </footer>
-  <script src="./src/js/main.js"></script>
+  <footer class="footer"></footer>
+  <script src="./src/js/index.js"></script>
 </body>
 
 </html>
