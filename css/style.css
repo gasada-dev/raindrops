@@ -356,10 +356,16 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .main .main__game {
@@ -370,6 +376,8 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background: #f8ac79;
+  width: 100%;
 }
 
 .main .main__calc {
@@ -380,6 +388,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background: #bdbcbc;
 }
 
 .main .main__calc .calc {
@@ -407,6 +416,7 @@ body {
 .main .main__calc .calc .calc__grid .btn {
   font-size: 20px;
   font-weight: 700;
+  border-radius: 25px;
 }
 
 .main .main__calc .calc .calc__grid .display {

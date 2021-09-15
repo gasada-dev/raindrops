@@ -6,16 +6,26 @@ body {
 
 .main {
   display: flex;
+  flex: 1 0 auto;
   flex-direction: row;
+  justify-content: space-between;
 
   .main__game {
     display: flex;
     flex-direction: column;
+    background: rgb(248, 172, 121);
+    width: 100%;
+
+    .ocean{
+
+    }
   }
 
   .main__calc {
     display: flex;
     flex-direction: column;
+    background: rgb(189, 188, 188);
+    
 
     .calc {
       height: 500px;
@@ -36,6 +46,7 @@ body {
         .btn {
           font-size: 20px;
           font-weight: 700;
+          border-radius: 25px;
         }
 
         .display {
