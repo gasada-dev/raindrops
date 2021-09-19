@@ -352,13 +352,10 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-.main {
+body .main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -366,9 +363,16 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  background: url(../src/img/beach.jpg) no-repeat;
+  background-size: 100%;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
-.main .main__game {
+body .main .main__game {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -376,11 +380,12 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: #f8ac79;
-  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
 }
 
-.main .main__calc {
+body .main .main__calc {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -388,17 +393,29 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background: #bdbcbc;
+  padding: 1rem 1rem;
 }
 
-.main .main__calc .calc {
+body .main .main__calc .score {
+  text-align: center;
+}
+
+body .main .main__calc .score .score__num {
+  color: #028602;
+}
+
+body .main .main__calc .calc {
   height: 500px;
   width: 325px;
   background-color: #6771fae0;
   border-radius: 20px;
 }
 
-.main .main__calc .calc .calc__grid {
+body .main .main__calc .calc .calc__grid {
   padding: 20px 10px;
   display: -ms-grid;
   display: grid;
@@ -413,13 +430,13 @@ body {
           column-gap: 3px;
 }
 
-.main .main__calc .calc .calc__grid .btn {
+body .main .main__calc .calc .calc__grid .btn {
   font-size: 20px;
   font-weight: 700;
   border-radius: 25px;
 }
 
-.main .main__calc .calc .calc__grid .display {
+body .main .main__calc .calc .calc__grid .display {
   color: #000000;
   background-color: #704e4e;
   -ms-grid-column: 1;
@@ -430,7 +447,7 @@ body {
   padding: 15px 5px;
 }
 
-.main .main__calc .calc .calc__grid .zero {
+body .main .main__calc .calc .calc__grid .zero {
   -ms-grid-row: 5;
       grid-row-start: 5;
   grid-row-end: 6;
@@ -439,7 +456,7 @@ body {
   grid-column-end: 3;
 }
 
-.main .main__calc .calc .calc__grid .result {
+body .main .main__calc .calc .calc__grid .result {
   -ms-grid-row: 4;
       grid-row-start: 4;
   grid-row-end: 6;
@@ -448,12 +465,21 @@ body {
   grid-column-end: 5;
 }
 
-.main .main__calc .calc .calc__grid .clear {
+body .main .main__calc .calc .calc__grid .clear {
   -ms-grid-row: 2;
       grid-row-start: 2;
   grid-row-end: 4;
   -ms-grid-column: 4;
       grid-column-start: 4;
   grid-column-end: 5;
+}
+
+body .main .menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 0.5rem;
 }
 /*# sourceMappingURL=style.css.map */
