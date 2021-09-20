@@ -3,6 +3,7 @@ const operationBtns = document.querySelectorAll('.operation');
 const resultBtn = document.getElementById('result');
 const clearBtns = document.querySelectorAll('.clear');
 const display = document.getElementById('display');
+let score = document.querySelectorAll('.score__num').textContent;
 
 let memoryCurrentNumber = 0;
 let memoryNewNumber = false;
@@ -29,7 +30,6 @@ for (let i = 0; i < clearBtns.length; i++) {
   });
 };
 
-resultBtn.addEventListener('click', result);
 
 function numberPress(num) {
 
@@ -61,12 +61,17 @@ function operation(oper) {
   };
 };
 
+
+
 function clear(id) {
 
   if (id === 'delete') {
-    // need add 'delete func' 
+    display.value = display.value.substring(0, display.value.length - 1);
+    memoryNewNumber = true;
+    memoryCurrentNumber = display.value;
+    memoryPendingOperation = '';
 
-  } else if (id === 'c') {
+  } else if (id === 'c' || 'result') {
     display.value = '0';
     memoryNewNumber = true;
     memoryCurrentNumber = '0';
@@ -74,4 +79,5 @@ function clear(id) {
   };
 };
 
-
+resultBtn.addEventListener('click', result); //---result---
+score.textContent = '1';

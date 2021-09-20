@@ -28,6 +28,7 @@ body {
 
       .score {
         text-align: center;
+        font-size: 2rem;
 
         .score__num {
           color: rgb(2, 134, 2);
@@ -72,18 +73,23 @@ body {
             grid-column-start: 1;
             grid-column-end: 3;
           }
-
+          .clear {
+            grid-row-start: 2;
+            grid-row-end: 4;
+            grid-column-start: 4;
+            grid-column-end: 5;
+          }
           .result {
             grid-row-start: 4;
             grid-row-end: 6;
             grid-column-start: 4;
             grid-column-end: 5;
           }
-          .clear {
-            grid-row-start: 2;
-            grid-row-end: 4;
-            grid-column-start: 4;
-            grid-column-end: 5;
+          .delete {
+            grid-row-start: 5;
+            grid-row-end: 6;
+            grid-column-start: 3;
+            grid-column-end: 4;
           }
         }
       }

@@ -402,6 +402,7 @@ body .main .main__calc {
 
 body .main .main__calc .score {
   text-align: center;
+  font-size: 2rem;
 }
 
 body .main .main__calc .score .score__num {
@@ -456,6 +457,15 @@ body .main .main__calc .calc .calc__grid .zero {
   grid-column-end: 3;
 }
 
+body .main .main__calc .calc .calc__grid .clear {
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  grid-row-end: 4;
+  -ms-grid-column: 4;
+      grid-column-start: 4;
+  grid-column-end: 5;
+}
+
 body .main .main__calc .calc .calc__grid .result {
   -ms-grid-row: 4;
       grid-row-start: 4;
@@ -465,13 +475,13 @@ body .main .main__calc .calc .calc__grid .result {
   grid-column-end: 5;
 }
 
-body .main .main__calc .calc .calc__grid .clear {
-  -ms-grid-row: 2;
-      grid-row-start: 2;
-  grid-row-end: 4;
-  -ms-grid-column: 4;
-      grid-column-start: 4;
-  grid-column-end: 5;
+body .main .main__calc .calc .calc__grid .delete {
+  -ms-grid-row: 5;
+      grid-row-start: 5;
+  grid-row-end: 6;
+  -ms-grid-column: 3;
+      grid-column-start: 3;
+  grid-column-end: 4;
 }
 
 body .main .menu {
