@@ -1,30 +1,30 @@
-const numberBtns = document.querySelectorAll('.number');
-const operationBtns = document.querySelectorAll('.operation');
-const resultBtn = document.getElementById('result');
-const clearBtns = document.querySelectorAll('.clear');
-const display = document.getElementById('display');
-let score = document.querySelectorAll('.score__num').textContent;
+const NUMBERBTNS = document.querySelectorAll('.number');
+const OPERATIONBTNS = document.querySelectorAll('.operation');
+const RESULTBTN = document.getElementById('result');
+const CLEARBTNS = document.querySelectorAll('.clear');
+const DISPLAY = document.getElementById('display');
+const SCORE = document.querySelector('.score__num');
 
 let memoryCurrentNumber = 0;
 let memoryNewNumber = false;
 let memoryPendingOperation = '';
 
-for (let i = 0; i < numberBtns.length; i++) {
-  let numberBtn = numberBtns[i];
+for (let i = 0; i < NUMBERBTNS.length; i++) {
+  let numberBtn = NUMBERBTNS[i];
   numberBtn.addEventListener('click', (e) => {
     numberPress(e.target.textContent);
   });
 };
 
-for (let i = 0; i < operationBtns.length; i++) {
-  let operationBtn = operationBtns[i];
+for (let i = 0; i < OPERATIONBTNS.length; i++) {
+  let operationBtn = OPERATIONBTNS[i];
   operationBtn.addEventListener('click', (e) => {
     operation(e.target.textContent);
   });
 };
 
-for (let i = 0; i < clearBtns.length; i++) {
-  let clearBtn = clearBtns[i];
+for (let i = 0; i < CLEARBTNS.length; i++) {
+  let clearBtn = CLEARBTNS[i];
   clearBtn.addEventListener('click', (e) => {
     clear(e.target.id);
   });
@@ -32,52 +32,47 @@ for (let i = 0; i < clearBtns.length; i++) {
 
 
 function numberPress(num) {
-
   if (memoryNewNumber) {
 
-    display.value = num;
+    DISPLAY.value = num;
     memoryNewNumber = false;
 
   } else {
 
-    if (display.value === '0') {
-      display.value = num;
+    if (DISPLAY.value === '0') {
+      DISPLAY.value = num;
 
     } else {
-      display.value += num;
+      DISPLAY.value += num;
     };
   };
 };
 
 function operation(oper) {
 
-  if (memoryNewNumber && memoryPendingOperation !== '=') {
-    display.value = memoryCurrentNumber;
-
-  } else {
-    memoryNewNumber = true;
-    display.value = memoryCurrentNumber;
-    memoryPendingOperation = oper;
-  };
+  SCORE.textContent = Number(DISPLAY.value) + Number(SCORE.textContent);
+  memoryNewNumber = true;
+  DISPLAY.value = memoryCurrentNumber;
+  memoryPendingOperation = oper;
 };
-
-
 
 function clear(id) {
 
   if (id === 'delete') {
-    display.value = display.value.substring(0, display.value.length - 1);
+    DISPLAY.value = DISPLAY.value.substring(0, DISPLAY.value.length - 1);
     memoryNewNumber = true;
-    memoryCurrentNumber = display.value;
+    memoryCurrentNumber = DISPLAY.value;
     memoryPendingOperation = '';
 
   } else if (id === 'c' || 'result') {
-    display.value = '0';
+    DISPLAY.value = '0';
     memoryNewNumber = true;
     memoryCurrentNumber = '0';
     memoryPendingOperation = '';
   };
 };
 
-resultBtn.addEventListener('click', result); //---result---
-score.textContent = '1';
+RESULTBTN.addEventListener('click', result);
+
+
+
