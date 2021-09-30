@@ -74,5 +74,5 @@ function clear(id) {
 
 RESULTBTN.addEventListener('click', result);
 
-
+// кружок будет двигаться уменьшением width
 

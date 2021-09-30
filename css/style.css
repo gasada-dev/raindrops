@@ -385,6 +385,19 @@ body .main .main__game {
           flex: 1 1;
 }
 
+body .main .main__game .exercise {
+  width: 5rem;
+  height: 5rem;
+  background: rgba(255, 255, 95, 0.753);
+  border: 1px solid rgba(255, 255, 200, 0.5);
+  border-radius: 50%;
+  font-size: 1.5rem;
+}
+
+body .main .main__game .exercise .exercise__container {
+  padding: 1.5rem 1.2rem;
+}
+
 body .main .main__calc {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -410,14 +423,14 @@ body .main .main__calc .score .score__num {
 }
 
 body .main .main__calc .calc {
-  height: 500px;
-  width: 325px;
+  height: 30rem;
+  width: 20rem;
   background-color: #6771fae0;
   border-radius: 20px;
 }
 
 body .main .main__calc .calc .calc__grid {
-  padding: 20px 10px;
+  padding: 1.3rem 0.7rem;
   display: -ms-grid;
   display: grid;
   width: 100%;
@@ -426,15 +439,15 @@ body .main .main__calc .calc .calc__grid {
       grid-template-rows: repeat(5, 1fr);
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
-  row-gap: 5px;
-  -webkit-column-gap: 3px;
-          column-gap: 3px;
+  row-gap: 0.2rem;
+  -webkit-column-gap: 0.1rem;
+          column-gap: 0.1rem;
 }
 
 body .main .main__calc .calc .calc__grid .btn {
-  font-size: 20px;
+  font-size: 1.3rem;
   font-weight: 700;
-  border-radius: 25px;
+  border-radius: 5%;
 }
 
 body .main .main__calc .calc .calc__grid .display {
@@ -444,8 +457,8 @@ body .main .main__calc .calc .calc__grid .display {
       grid-column-start: 1;
   grid-column-end: 5;
   text-align: right;
-  font-size: 40px;
-  padding: 15px 5px;
+  font-size: 3rem;
+  padding: 0.5rem 0.5rem;
 }
 
 body .main .main__calc .calc .calc__grid .zero {
@@ -490,6 +503,6 @@ body .main .menu {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding: 0.5rem;
+  padding: 1rem;
 }
 /*# sourceMappingURL=style.css.map */
