@@ -5,6 +5,8 @@ const CLEARBTNS = document.querySelectorAll('.clear');
 const DISPLAY = document.getElementById('display');
 const SCORE = document.querySelector('.score__num');
 
+let exercise = document.querySelector('.exercise');
+
 let memoryCurrentNumber = 0;
 let memoryNewNumber = false;
 let memoryPendingOperation = '';
@@ -31,7 +33,7 @@ for (let i = 0; i < CLEARBTNS.length; i++) {
 };
 
 
-function numberPress(num) {
+let numberPress = (num) => {
   if (memoryNewNumber) {
 
     DISPLAY.value = num;
@@ -48,7 +50,7 @@ function numberPress(num) {
   };
 };
 
-function operation(oper) {
+let operation = (oper) => {
 
   SCORE.textContent = Number(DISPLAY.value) + Number(SCORE.textContent);
   memoryNewNumber = true;
@@ -56,7 +58,7 @@ function operation(oper) {
   memoryPendingOperation = oper;
 };
 
-function clear(id) {
+let clear =(id) => {
 
   if (id === 'delete') {
     DISPLAY.value = DISPLAY.value.substring(0, DISPLAY.value.length - 1);
@@ -74,5 +76,9 @@ function clear(id) {
 
 RESULTBTN.addEventListener('click', result);
 
-// кружок будет двигаться уменьшением width
+exercise.addEventListener('animationiteration', () => {
+  let random = Math.floor(Math.random() * 13);
+  left = random * 4;
+  exercise.style.left = left + 'rem';
+});
 

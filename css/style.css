@@ -385,13 +385,40 @@ body .main .main__game {
           flex: 1 1;
 }
 
+body .main .main__game .game {
+  min-height: 100vh;
+  min-width: 70vw;
+}
+
 body .main .main__game .exercise {
+  position: relative;
+  top: 1rem;
   width: 5rem;
   height: 5rem;
-  background: rgba(255, 255, 95, 0.753);
-  border: 1px solid rgba(255, 255, 200, 0.5);
+  background: rgba(255, 255, 95, 0.7);
+  border: 1px solid rgba(255, 255, 200, 0.4);
   border-radius: 50%;
   font-size: 1.5rem;
+  -webkit-animation: slide 2s infinite;
+          animation: slide 2s infinite;
+}
+
+@-webkit-keyframes slide {
+  0% {
+    top: -5rem;
+  }
+  100% {
+    top: 50rem;
+  }
+}
+
+@keyframes slide {
+  0% {
+    top: -5rem;
+  }
+  100% {
+    top: 50rem;
+  }
 }
 
 body .main .main__game .exercise .exercise__container {
