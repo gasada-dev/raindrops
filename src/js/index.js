@@ -5,6 +5,9 @@ const CLEARBTNS = document.querySelectorAll('.clear');
 const DISPLAY = document.getElementById('display');
 const SCORE = document.querySelector('.score__num');
 
+let firstTerm = document.getElementById('term__first');
+let secondTerm = document.getElementById('term__second');
+let variable = document.getElementById('variable');
 let exercise = document.querySelector('.exercise');
 
 let memoryCurrentNumber = 0;
@@ -58,7 +61,7 @@ let operation = (oper) => {
   memoryPendingOperation = oper;
 };
 
-let clear =(id) => {
+let clear = (id) => {
 
   if (id === 'delete') {
     DISPLAY.value = DISPLAY.value.substring(0, DISPLAY.value.length - 1);
@@ -77,8 +80,37 @@ let clear =(id) => {
 RESULTBTN.addEventListener('click', result);
 
 exercise.addEventListener('animationiteration', () => {
-  let random = Math.floor(Math.random() * 13);
-  left = random * 4;
+  let answer;
+  let random = (min, max) => {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+  left = random(0, 10) * 5;
   exercise.style.left = left + 'rem';
-});
+  firstTerm.textContent = random(7, 14);
+  secondTerm.textContent = random(0, 7);
 
+  switch (random(0, 2)) {
+    case 0:
+      variable.textContent = '+';
+      break;
+    case 1:
+      variable.textContent = '-';
+      break;
+    case 2:
+      variable.textContent = '*';
+      break;
+  }
+
+  switch (variable.textContent) {
+    case '+':
+      answer = Number(firstTerm.textContent) + Number(secondTerm.textContent);
+      break;
+    case '*':
+      answer = Number(firstTerm.textContent) * Number(secondTerm.textContent);
+      break;
+    case '-':
+      answer = Number(firstTerm.textContent) - Number(secondTerm.textContent);
+      break;
+  }
+  console.log('answer', answer);
+});
