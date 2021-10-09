@@ -399,8 +399,15 @@ body .main .main__game .exercise {
   border: 1px solid rgba(255, 255, 200, 0.4);
   border-radius: 50%;
   font-size: 1.5rem;
-  -webkit-animation: slide 2s infinite;
-          animation: slide 2s infinite;
+}
+
+body .main .main__game .exercise .exercise__container {
+  padding: 1.5rem 0 0 0.5rem;
+}
+
+body .main .main__game .animation {
+  -webkit-animation: slide 5s;
+          animation: slide 5s;
 }
 
 @-webkit-keyframes slide {
@@ -419,10 +426,6 @@ body .main .main__game .exercise {
   100% {
     top: 50rem;
   }
-}
-
-body .main .main__game .exercise .exercise__container {
-  padding: 1.5rem 0 0 0.5rem;
 }
 
 body .main .main__calc {

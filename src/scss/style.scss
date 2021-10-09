@@ -32,7 +32,14 @@ body {
         border: 1px solid rgba(255, 255, 200, 0.4);
         border-radius: 50%;
         font-size: 1.5rem;
-        animation: slide 2s infinite;
+
+        .exercise__container {
+          padding: 1.5rem 0 0 0.5rem;
+        }
+      }
+
+      .animation {
+        animation: slide 5s;
 
         @keyframes slide {
           0% {
@@ -41,10 +48,6 @@ body {
           100% {
             top: 50rem;
           }
-        }
-
-        .exercise__container {
-          padding: 1.5rem 0 0 0.5rem;
         }
       }
     }

@@ -4,6 +4,7 @@ const RESULTBTN = document.getElementById('result');
 const CLEARBTNS = document.querySelectorAll('.clear');
 const DISPLAY = document.getElementById('display');
 const SCORE = document.querySelector('.score__num');
+const ANIMATION = document.querySelectorAll('.animation');
 
 let firstTerm = document.getElementById('term__first');
 let secondTerm = document.getElementById('term__second');
@@ -13,6 +14,13 @@ let exercise = document.querySelector('.exercise');
 let memoryCurrentNumber = 0;
 let memoryNewNumber = false;
 let memoryPendingOperation = '';
+let answer = 0;
+let answerUser = 0;
+
+let random = (min, max) => {
+  return Math.floor(Math.random() * (max - min) + min);
+};
+
 
 for (let i = 0; i < NUMBERBTNS.length; i++) {
   let numberBtn = NUMBERBTNS[i];
@@ -35,7 +43,6 @@ for (let i = 0; i < CLEARBTNS.length; i++) {
   });
 };
 
-
 let numberPress = (num) => {
   if (memoryNewNumber) {
 
@@ -54,8 +61,7 @@ let numberPress = (num) => {
 };
 
 let operation = (oper) => {
-
-  SCORE.textContent = Number(DISPLAY.value) + Number(SCORE.textContent);
+  answerUser = DISPLAY.value;
   memoryNewNumber = true;
   DISPLAY.value = memoryCurrentNumber;
   memoryPendingOperation = oper;
@@ -77,19 +83,13 @@ let clear = (id) => {
   };
 };
 
-RESULTBTN.addEventListener('click', result);
-
-exercise.addEventListener('animationiteration', () => {
-  let answer;
-  let random = (min, max) => {
-    return Math.floor(Math.random() * (max - min) + min);
-  }
+let start = () => {
   left = random(0, 10) * 5;
   exercise.style.left = left + 'rem';
   firstTerm.textContent = random(7, 14);
   secondTerm.textContent = random(0, 7);
 
-  switch (random(0, 2)) {
+  switch (random(0, 3)) {
     case 0:
       variable.textContent = '+';
       break;
@@ -112,5 +112,21 @@ exercise.addEventListener('animationiteration', () => {
       answer = Number(firstTerm.textContent) - Number(secondTerm.textContent);
       break;
   }
+
+};
+
+RESULTBTN.addEventListener('click', () => {
+  console.log('answerUser', answerUser);
   console.log('answer', answer);
+  if (Number(answer) === Number(answerUser)) {
+    SCORE.textContent = Number(answer) + Number(SCORE.textContent); 
+    exercise.classList.remove ('animation');
+    setTimeout(function() {
+      exercise.classList.add ('animation');
+  }, 10);
+    start();
+
+  }
 });
+
+start();
