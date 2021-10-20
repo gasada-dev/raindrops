@@ -350,6 +350,7 @@ template {
 
 body {
   font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
 }
 
 body .main {
@@ -386,11 +387,12 @@ body .main .main__game {
 }
 
 body .main .main__game .game {
-  min-height: 100vh;
-  min-width: 70vw;
+  min-height: 90vh;
+  min-width: 60vw;
 }
 
 body .main .main__game .exercise {
+  display: none;
   position: relative;
   top: 1rem;
   width: 5rem;
@@ -405,27 +407,10 @@ body .main .main__game .exercise .exercise__container {
   padding: 1.5rem 0 0 0.5rem;
 }
 
-body .main .main__game .animation {
-  -webkit-animation: slide 5s;
-          animation: slide 5s;
-}
-
-@-webkit-keyframes slide {
-  0% {
-    top: -5rem;
-  }
-  100% {
-    top: 50rem;
-  }
-}
-
-@keyframes slide {
-  0% {
-    top: -5rem;
-  }
-  100% {
-    top: 50rem;
-  }
+body .main .main__game .ocean {
+  position: relative;
+  bottom: 0;
+  height: 5rem;
 }
 
 body .main .main__calc {
@@ -534,5 +519,34 @@ body .main .menu {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   padding: 1rem;
+}
+
+body .main .end {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  top: 10vh;
+  left: 30vw;
+  width: 30vw;
+  height: 65vh;
+  border: 0.2rem solid black;
+  background: rgba(150, 150, 150, 0.75);
+}
+
+body .main .end .end__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  text-align: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 /*# sourceMappingURL=style.css.map */
