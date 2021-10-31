@@ -350,7 +350,60 @@ template {
 
 body {
   font-family: "Roboto", sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
+}
+
+body .custom-btn {
+  width: 7rem;
+  height: 2.5rem;
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 0.4rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  -webkit-box-shadow: inset 0.15rem 0.15rem 0.15rem 0rem rgba(255, 255, 255, 0.5), 0.45rem 0.5rem 1.2rem 0rem rgba(0, 0, 0, 0.1), 0.25rem 0.25rem 0.3rem 0rem rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0.15rem 0.15rem 0.15rem 0rem rgba(255, 255, 255, 0.5), 0.45rem 0.5rem 1.2rem 0rem rgba(0, 0, 0, 0.1), 0.25rem 0.25rem 0.3rem 0rem rgba(0, 0, 0, 0.1);
+  outline: none;
+  background: rgba(0, 132, 165, 0.9);
+  border: none;
+  z-index: 1;
+}
+
+body .custom-btn:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 0.35rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  background-image: linear-gradient(315deg, rgba(255, 255, 255, 0.85) 0%, #9cf6fc 75%);
+  -webkit-box-shadow: inset 0.15rem 0.15rem 0.15rem 0rem rgba(255, 255, 255, 0.5), 0.45rem 0.5rem 1.2rem 0rem rgba(0, 0, 0, 0.1), 0.25rem 0.25rem 0.3rem 0rem rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0.15rem 0.15rem 0.15rem 0rem rgba(255, 255, 255, 0.5), 0.45rem 0.5rem 1.2rem 0rem rgba(0, 0, 0, 0.1), 0.25rem 0.25rem 0.3rem 0rem rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+body .custom-btn:hover {
+  color: #000;
+}
+
+body .custom-btn:hover:after {
+  top: auto;
+  bottom: 0;
+  height: 100%;
+}
+
+body .custom-btn:active {
+  top: 0.15rem;
 }
 
 body .main {
@@ -367,7 +420,7 @@ body .main {
   -webkit-box-flex: 1;
       -ms-flex: 1 1;
           flex: 1 1;
-  background: url(../src/img/beach.jpg) no-repeat;
+  background: url(../src/img/1.jpg) no-repeat;
   background-size: 100%;
   min-height: 100vh;
   min-width: 100vw;
@@ -397,14 +450,26 @@ body .main .main__game .exercise {
   top: 1rem;
   width: 5rem;
   height: 5rem;
-  background: rgba(255, 255, 95, 0.7);
+  background: rgba(0, 132, 165, 0.9);
   border: 1px solid rgba(255, 255, 200, 0.4);
   border-radius: 50%;
   font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 body .main .main__game .exercise .exercise__container {
-  padding: 1.5rem 0 0 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem 0.2rem 0 0.2rem;
 }
 
 body .main .main__game .ocean {
@@ -424,24 +489,23 @@ body .main .main__calc {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background: #bdbcbc;
+  background: rgba(255, 255, 255, 0);
   padding: 1rem 1rem;
 }
 
 body .main .main__calc .score {
   text-align: center;
   font-size: 2rem;
-}
-
-body .main .main__calc .score .score__num {
-  color: #028602;
+  color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(0, 132, 165, 0.9);
+  border-radius: 5rem;
 }
 
 body .main .main__calc .calc {
   height: 30rem;
   width: 20rem;
-  background-color: #6771fae0;
-  border-radius: 20px;
+  background-color: rgba(0, 132, 165, 0.65);
+  border-radius: 1.2rem;
 }
 
 body .main .main__calc .calc .calc__grid {
@@ -454,25 +518,28 @@ body .main .main__calc .calc .calc__grid {
       grid-template-rows: repeat(5, 1fr);
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
-  row-gap: 0.2rem;
-  -webkit-column-gap: 0.1rem;
-          column-gap: 0.1rem;
+  row-gap: 0.25rem;
+  -webkit-column-gap: 0.25rem;
+          column-gap: 0.25rem;
 }
 
 body .main .main__calc .calc .calc__grid .btn {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  border-radius: 5%;
+  border-radius: 0.8rem;
+  border: none;
+  color: rgba(0, 132, 165, 0.65);
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 body .main .main__calc .calc .calc__grid .display {
-  color: #000000;
-  background-color: #704e4e;
+  color: rgba(0, 132, 165, 0.9);
+  background-color: rgba(255, 255, 255, 0.85);
   -ms-grid-column: 1;
       grid-column-start: 1;
   grid-column-end: 5;
   text-align: right;
-  font-size: 3rem;
+  font-size: 2.6rem;
   padding: 0.5rem 0.5rem;
 }
 
@@ -518,7 +585,14 @@ body .main .menu {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding: 1rem;
+}
+
+body .main .menu .btn-end {
+  width: 5rem;
+}
+
+body .main .menu .btn-fullscreen {
+  width: 9rem;
 }
 
 body .main .end {
@@ -530,8 +604,8 @@ body .main .end {
   left: 30vw;
   width: 30vw;
   height: 65vh;
-  border: 0.2rem solid black;
-  background: rgba(150, 150, 150, 0.75);
+  border: 0.15rem solid rgba(0, 132, 165, 0.9);
+  background: rgba(0, 132, 165, 0.65);
 }
 
 body .main .end .end__container {
@@ -548,5 +622,13 @@ body .main .end .end__container {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
+}
+
+body .main .end .end__container .end__text {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+body .main .end .end__container .end__score--text {
+  color: rgba(255, 255, 255, 0.85);
 }
 /*# sourceMappingURL=style.css.map */

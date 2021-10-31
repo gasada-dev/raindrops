@@ -1,15 +1,64 @@
 @import "_normalize.scss";
+@import "_variables.scss";
 
 body {
   font-family: "Roboto", sans-serif;
-  font-size: 1.6rem;
+  font-size: $base-fontsize;
+
+  .custom-btn {
+    width: 7rem;
+    height: 2.5rem;
+    color: $white-color;
+    border-radius: 0.4rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 0.15rem 0.15rem 0.15rem 0rem $shadow-color,
+      0.45rem 0.5rem 1.2rem 0rem rgba(0, 0, 0, 0.1), 0.25rem 0.25rem 0.3rem 0rem rgba(0, 0, 0, 0.1);
+    outline: none;
+    background: $base-color;
+    border: none;
+    z-index: 1;
+  }
+
+  .custom-btn:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 0;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 0.35rem;
+    background-color: $white-color;
+    background-image: linear-gradient(315deg, $white-color 0%, rgb(156, 246, 252) 75%);
+    box-shadow: inset 0.15rem 0.15rem 0.15rem 0rem $shadow-color,
+      0.45rem 0.5rem 1.2rem 0rem rgba(0, 0, 0, 0.1), 0.25rem 0.25rem 0.3rem 0rem rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  .custom-btn:hover {
+    color: #000;
+  }
+  .custom-btn:hover:after {
+    top: auto;
+    bottom: 0;
+    height: 100%;
+  }
+  .custom-btn:active {
+    top: 0.15rem;
+  }
 
   .main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex: 1 1;
-    background: url(../src/img/beach.jpg) no-repeat;
+    background: url(../src/img/1.jpg) no-repeat;
     background-size: 100%;
     min-height: 100vh;
     min-width: 100vw;
@@ -30,13 +79,19 @@ body {
         top: 1rem;
         width: 5rem;
         height: 5rem;
-        background: rgba(255, 255, 95, 0.7);
+        background: $base-color;
         border: 1px solid rgba(255, 255, 200, 0.4);
         border-radius: 50%;
         font-size: 1.5rem;
+        color:$white-color;
 
         .exercise__container {
-          padding: 1.5rem 0 0 0.5rem;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          width: 100%;
+          height: 100%;
+          padding: 1.5rem 0.2rem 0 0.2rem;
         }
       }
 
@@ -51,23 +106,23 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      background: rgb(189, 188, 188);
+      background: rgba(255, 255, 255, 0);
       padding: 1rem 1rem;
+
 
       .score {
         text-align: center;
         font-size: 2rem;
-
-        .score__num {
-          color: rgb(2, 134, 2);
-        }
+        color: $white-color;
+        background-color: $base-color;
+        border-radius: 5rem;
       }
 
       .calc {
         height: 30rem;
         width: 20rem;
-        background-color: #6771fae0;
-        border-radius: 20px;
+        background-color: $secondary-color;
+        border-radius: 1.2rem;
 
         .calc__grid {
           padding: 1.3rem 0.7rem;
@@ -76,22 +131,25 @@ body {
           height: 100%;
           grid-template-rows: repeat(5, 1fr);
           grid-template-columns: repeat(4, 1fr);
-          row-gap: 0.2rem;
-          column-gap: 0.1rem;
+          row-gap: 0.25rem;
+          column-gap: 0.25rem;
 
           .btn {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            border-radius: 5%;
+            border-radius: 0.8rem;
+            border: none;
+            color: $secondary-color;
+            background-color: $white-color;
           }
 
           .display {
-            color: #000000;
-            background-color: #704e4e;
+            color: $base-color;
+            background-color: $white-color;
             grid-column-start: 1;
             grid-column-end: 5;
             text-align: right;
-            font-size: 3rem;
+            font-size: 2.6rem;
             padding: 0.5rem 0.5rem;
           }
 
@@ -129,7 +187,14 @@ body {
     .menu {
       display: flex;
       justify-content: space-around;
-      padding: 1rem;
+
+      .btn-end {
+        width: 5rem;
+      }
+
+      .btn-fullscreen {
+        width: 9rem;
+      }
     }
     .end {
       display: flex;
@@ -138,8 +203,8 @@ body {
       left: 30vw;
       width: 30vw;
       height: 65vh;
-      border: 0.2rem solid rgb(0, 0, 0);
-      background: rgba(150, 150, 150, 0.75);
+      border: 0.15rem solid $base-color;
+      background: $secondary-color;
 
       .end__container {
         display: flex;
@@ -147,6 +212,13 @@ body {
         justify-content: space-around;
         text-align: center;
         flex: 1 1 auto;
+
+        .end__text {
+          color: $white-color;
+        }
+        .end__score--text {
+          color: $white-color;
+        }
       }
     }
   }
