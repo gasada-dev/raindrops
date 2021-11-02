@@ -624,11 +624,16 @@ body .main .end .end__container {
           flex: 1 1 auto;
 }
 
-body .main .end .end__container .end__text {
+body .main .end .end__container .tutorial {
+  width: 10rem;
+}
+
+body .main .end .end__container .text-head {
   color: rgba(255, 255, 255, 0.85);
 }
 
 body .main .end .end__container .end__score--text {
+  display: none;
   color: rgba(255, 255, 255, 0.85);
 }
 /*# sourceMappingURL=style.css.map */

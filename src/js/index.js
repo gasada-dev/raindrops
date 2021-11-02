@@ -1,4 +1,3 @@
-// после окончания игры выводится счёт и статистика игры - done
 // при клике по кнопке 'How to play' игра запускается в автоматическом режиме
 // правильные и неправильные ответы сопровождаются звуковыми сигналами и анимацией. Также есть фоновый звук и анимация волн
 // минимальная ширина страницы, при которой приложение отображается корректно – 320 рх
@@ -7,7 +6,6 @@
 // иногда выпадают бонусные капли другого цвета, решение выражений в которых полностью очищает игровое поле от других капель
 // набирать и вводить ответ можно не только кликая мышкой, но и при помощи клавиатуры
 // приложение можно развернуть на весь экран
-// кнопки how to play, main menu, play
 
 const NUMBERBTNS = document.querySelectorAll('.number');
 const OPERATIONBTNS = document.querySelectorAll('.operation');
@@ -18,6 +16,8 @@ const SCORE = document.querySelector('.score__num');
 const ENDSCORE = document.querySelector('.end__score');
 const PLAY = document.querySelector('.play');
 const ENDGAME = document.querySelector('.end');
+const TEXT_HEAD = document.querySelector('.text-head');
+const TEXT_SCORE = document.querySelector('.end__score--text');
 
 let firstTerm = document.getElementById('term__first');
 let secondTerm = document.getElementById('term__second');
@@ -56,7 +56,8 @@ let random = (min, max) => {
 let lose = () => {
   loseCount++;
   if (loseCount > 2) {
-    console.log('end');
+    TEXT_HEAD.textContent = 'Игра окончена';
+    TEXT_SCORE.style.display = 'block';
     exercise.style.display = 'none';
     ENDGAME.style.display = 'flex';
     SCORE.textContent = 0;
@@ -179,4 +180,3 @@ PLAY.addEventListener('click', () => {
   start();
 })
 
-start();

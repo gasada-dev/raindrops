@@ -18,8 +18,8 @@ body {
     transition: all 0.3s ease;
     position: relative;
     display: inline-block;
-    box-shadow: inset 0.15rem 0.15rem 0.15rem 0rem $shadow-color,
-      0.45rem 0.5rem 1.2rem 0rem rgba(0, 0, 0, 0.1), 0.25rem 0.25rem 0.3rem 0rem rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0.15rem 0.15rem 0.15rem 0rem $shadow-color, 0.45rem 0.5rem 1.2rem 0rem rgba(0, 0, 0, 0.1),
+      0.25rem 0.25rem 0.3rem 0rem rgba(0, 0, 0, 0.1);
     outline: none;
     background: $base-color;
     border: none;
@@ -37,8 +37,8 @@ body {
     border-radius: 0.35rem;
     background-color: $white-color;
     background-image: linear-gradient(315deg, $white-color 0%, rgb(156, 246, 252) 75%);
-    box-shadow: inset 0.15rem 0.15rem 0.15rem 0rem $shadow-color,
-      0.45rem 0.5rem 1.2rem 0rem rgba(0, 0, 0, 0.1), 0.25rem 0.25rem 0.3rem 0rem rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0.15rem 0.15rem 0.15rem 0rem $shadow-color, 0.45rem 0.5rem 1.2rem 0rem rgba(0, 0, 0, 0.1),
+      0.25rem 0.25rem 0.3rem 0rem rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
   }
   .custom-btn:hover {
@@ -83,7 +83,7 @@ body {
         border: 1px solid rgba(255, 255, 200, 0.4);
         border-radius: 50%;
         font-size: 1.5rem;
-        color:$white-color;
+        color: $white-color;
 
         .exercise__container {
           display: flex;
@@ -108,7 +108,6 @@ body {
       justify-content: space-between;
       background: rgba(255, 255, 255, 0);
       padding: 1rem 1rem;
-
 
       .score {
         text-align: center;
@@ -213,10 +212,15 @@ body {
         text-align: center;
         flex: 1 1 auto;
 
-        .end__text {
+        .tutorial {
+          width: 10rem;
+        }
+
+        .text-head {
           color: $white-color;
         }
         .end__score--text {
+          display: none;
           color: $white-color;
         }
       }
