@@ -4,11 +4,11 @@
 body {
   font-family: "Roboto", sans-serif;
   font-size: $base-fontsize;
+  color: $white-color;
 
   .custom-btn {
     width: 7rem;
     height: 2.5rem;
-    color: $white-color;
     border-radius: 0.4rem;
     padding: 0.5rem 1rem;
     font-size: 1.4rem;
@@ -24,6 +24,7 @@ body {
     background: $base-color;
     border: none;
     z-index: 1;
+    color: $white-color;
   }
 
   .custom-btn:after {
@@ -83,7 +84,6 @@ body {
         border: 1px solid rgba(255, 255, 200, 0.4);
         border-radius: 50%;
         font-size: 1.5rem;
-        color: $white-color;
 
         .exercise__container {
           display: flex;
@@ -112,7 +112,6 @@ body {
       .score {
         text-align: center;
         font-size: 2rem;
-        color: $white-color;
         background-color: $base-color;
         border-radius: 5rem;
       }
@@ -221,7 +220,11 @@ body {
         }
         .end__score--text {
           display: none;
-          color: $white-color;
+        }
+        .audio {
+          text-decoration: underline;
+          cursor: pointer;
+          user-select: none;
         }
       }
     }

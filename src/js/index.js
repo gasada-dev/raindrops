@@ -1,29 +1,36 @@
 // при клике по кнопке 'How to play' игра запускается в автоматическом режиме
-// правильные и неправильные ответы сопровождаются звуковыми сигналами и анимацией. Также есть фоновый звук и анимация волн
+// правильные и неправильные ответы сопровождаются анимацией. Также есть анимация волн
 // минимальная ширина страницы, при которой приложение отображается корректно – 320 рх
-// в ходе игры скорость падения капель постепенно увеличивается
-// счёт игры увеличивается по нарастающей - 10 баллов за первый правильный, каждый следующий ответ приносит на один балл больше, чем предыдуший
-// иногда выпадают бонусные капли другого цвета, решение выражений в которых полностью очищает игровое поле от других капель
 // набирать и вводить ответ можно не только кликая мышкой, но и при помощи клавиатуры
+// иногда выпадают бонусные капли другого цвета, решение выражений в которых полностью очищает игровое поле от других капель
+// сделать волну и  смерть когда капля косается волны
+// в ходе игры скорость падения капель постепенно увеличивается
 // приложение можно развернуть на весь экран
 
 const NUMBERBTNS = document.querySelectorAll('.number');
 const OPERATIONBTNS = document.querySelectorAll('.operation');
-const RESULTBTN = document.getElementById('result');
 const CLEARBTNS = document.querySelectorAll('.clear');
-const DISPLAY = document.getElementById('display');
 const SCORE = document.querySelector('.score__num');
+const MUSIC = document.querySelector('.music');
 const ENDSCORE = document.querySelector('.end__score');
 const PLAY = document.querySelector('.play');
 const ENDGAME = document.querySelector('.end');
 const TEXT_HEAD = document.querySelector('.text-head');
 const TEXT_SCORE = document.querySelector('.end__score--text');
+//const TUTORIAL = document.querySelector('.tutorial');
+const AUDIO = document.querySelector('.audio-background');
+const SOUND = document.querySelector('.sound');
+const AUDIO_SOUND_TRUE = document.querySelector('.audio-sound-true');
+const AUDIO_SOUND_FALSE = document.querySelector('.audio-sound-false');
+const RESULTBTN = document.getElementById('result');
+const DISPLAY = document.getElementById('display');
 
 let firstTerm = document.getElementById('term__first');
 let secondTerm = document.getElementById('term__second');
 let variable = document.getElementById('variable');
 let exercise = document.querySelector('.exercise');
 
+//let tutorialCheck = false;
 let memoryCurrentNumber = 0;
 let memoryNewNumber = false;
 let memoryPendingOperation = '';
@@ -33,6 +40,11 @@ let loseCount = 0;
 let delayLose = 3000;
 let startAnimation = Date.now();
 let timePassed;
+let points = 10;
+let eventClick = new Event('click');
+let soundCheck = false;
+let musicOn = false;
+let soundOn = false;
 
 let animation = () => {
   let drawAnimation = setInterval(() => {
@@ -61,7 +73,8 @@ let lose = () => {
     exercise.style.display = 'none';
     ENDGAME.style.display = 'flex';
     SCORE.textContent = 0;
-
+    points = 10;
+    // tutorialCheck = false;
   } else {
     console.log('lose');
     start();
@@ -158,25 +171,89 @@ let start = () => {
       answer = Number(firstTerm.textContent) - Number(secondTerm.textContent);
       break;
   };
+  // if (tutorialCheck = true) {
+  //   setTimeout(RESULTBTN.dispatchEvent(eventClick), 2000);
+  // }
   animation();
 };
-
-RESULTBTN.addEventListener('click', () => {
-  if (Number(answer) === Number(answerUser)) {
-    SCORE.textContent = Number(answer) + Number(SCORE.textContent);
-    if (Number(answer) === 0) {
-      SCORE.textContent = 10 + Number(SCORE.textContent);
-    }
-    ENDSCORE.textContent = SCORE.textContent;
-    start();
-  }
-})
 
 PLAY.addEventListener('click', () => {
   loseCount = 0;
   ENDSCORE.textContent = 0;
   exercise.style.display = 'flex';
   ENDGAME.style.display = 'none';
+  if (musicOn === true) {
+    playAudio();
+  }
   start();
 })
 
+// TUTORIAL.addEventListener('click', () => {
+//   tutorialCheck = true;
+//   loseCount = 0;
+//   ENDSCORE.textContent = 0;
+//   exercise.style.display = 'flex';
+//   ENDGAME.style.display = 'none';
+// if (musicOn === true) {
+//   playAudio();
+// }
+//   start();
+// });
+
+RESULTBTN.addEventListener('click', () => {
+  // if (tutorialCheck === true) {
+  //   Number(answerUser) = Number(answer);
+  // }
+  if (Number(answer) === Number(answerUser)) {
+    soundCheck = true
+    playSound()
+    SCORE.textContent = points + Number(SCORE.textContent);
+    points++;
+    ENDSCORE.textContent = SCORE.textContent;
+    start();
+  }
+  else {
+    soundCheck = false;
+    playSound()
+  }
+})
+
+
+MUSIC.addEventListener('click', () => {
+  if (musicOn === true) {
+    musicOn = false;
+    MUSIC.textContent = 'Выключена';
+
+  } else {
+    musicOn = true;
+    MUSIC.textContent = 'Включена';
+  }
+})
+
+let playAudio = () => {
+  AUDIO.play();
+}
+let pauseAudio = () => {
+  AUDIO.pause();
+}
+
+SOUND.addEventListener('click', () => {
+  if (soundOn === true) {
+    soundOn = false;
+    SOUND.textContent = 'Выключены';
+
+  } else {
+    soundOn = true;
+    SOUND.textContent = 'Включены';
+  }
+})
+
+let playSound = () => {
+  if (soundOn === true) {
+    if (soundCheck === true) {
+      AUDIO_SOUND_TRUE.play();
+    } else {
+      AUDIO_SOUND_FALSE.play();
+    }
+  }
+}

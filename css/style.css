@@ -351,12 +351,12 @@ template {
 body {
   font-family: "Roboto", sans-serif;
   font-size: 1.7rem;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 body .custom-btn {
   width: 7rem;
   height: 2.5rem;
-  color: rgba(255, 255, 255, 0.85);
   border-radius: 0.4rem;
   padding: 0.5rem 1rem;
   font-size: 1.4rem;
@@ -373,6 +373,7 @@ body .custom-btn {
   background: rgba(0, 132, 165, 0.9);
   border: none;
   z-index: 1;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 body .custom-btn:after {
@@ -454,7 +455,6 @@ body .main .main__game .exercise {
   border: 1px solid rgba(255, 255, 200, 0.4);
   border-radius: 50%;
   font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.85);
 }
 
 body .main .main__game .exercise .exercise__container {
@@ -496,7 +496,6 @@ body .main .main__calc {
 body .main .main__calc .score {
   text-align: center;
   font-size: 2rem;
-  color: rgba(255, 255, 255, 0.85);
   background-color: rgba(0, 132, 165, 0.9);
   border-radius: 5rem;
 }
@@ -634,6 +633,14 @@ body .main .end .end__container .text-head {
 
 body .main .end .end__container .end__score--text {
   display: none;
-  color: rgba(255, 255, 255, 0.85);
+}
+
+body .main .end .end__container .audio {
+  text-decoration: underline;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 /*# sourceMappingURL=style.css.map */
