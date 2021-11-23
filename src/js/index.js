@@ -1,10 +1,10 @@
-// при клике по кнопке 'How to play' игра запускается в автоматическом режиме
-// правильные и неправильные ответы сопровождаются анимацией. Также есть анимация волн
 // минимальная ширина страницы, при которой приложение отображается корректно – 320 рх
 // набирать и вводить ответ можно не только кликая мышкой, но и при помощи клавиатуры
 // иногда выпадают бонусные капли другого цвета, решение выражений в которых полностью очищает игровое поле от других капель
-// сделать волну и  смерть когда капля косается волны
+
+// сделать волну и смерть когда капля косается волны
 // в ходе игры скорость падения капель постепенно увеличивается
+// правильные и неправильные ответы сопровождаются анимацией. Также есть анимация волн
 
 const NUMBERBTNS = document.querySelectorAll('.number');
 const OPERATIONBTNS = document.querySelectorAll('.operation');
@@ -17,11 +17,12 @@ const PLAY = document.querySelector('.play');
 const ENDGAME = document.querySelector('.end');
 const TEXT_HEAD = document.querySelector('.text-head');
 const TEXT_SCORE = document.querySelector('.end__score--text');
-//const TUTORIAL = document.querySelector('.tutorial');
+const TUTORIAL = document.querySelector('.tutorial');
 const AUDIO = document.querySelector('.audio-background');
 const SOUND = document.querySelector('.sound');
 const AUDIO_SOUND_TRUE = document.querySelector('.audio-sound-true');
 const AUDIO_SOUND_FALSE = document.querySelector('.audio-sound-false');
+const END_BTN = document.querySelector('.btn-end');
 const RESULTBTN = document.getElementById('result');
 const DISPLAY = document.getElementById('display');
 
@@ -30,7 +31,7 @@ let secondTerm = document.getElementById('term__second');
 let variable = document.getElementById('variable');
 let exercise = document.querySelector('.exercise');
 
-//let tutorialCheck = false;
+let tutorialCheck = false;
 let memoryCurrentNumber = 0;
 let memoryNewNumber = false;
 let memoryPendingOperation = '';
@@ -74,9 +75,8 @@ let lose = () => {
     ENDGAME.style.display = 'flex';
     SCORE.textContent = 0;
     points = 10;
-    // tutorialCheck = false;
+    tutorialCheck = false;
   } else {
-    console.log('lose');
     start();
   }
 }
@@ -147,34 +147,15 @@ let start = () => {
   exercise.style.left = left + 'rem';
   firstTerm.textContent = random(7, 14);
   secondTerm.textContent = random(0, 7);
+  randomSign();
 
-  switch (random(0, 3)) {
-    case 0:
-      variable.textContent = '+';
-      break;
-    case 1:
-      variable.textContent = '-';
-      break;
-    case 2:
-      variable.textContent = '*';
-      break;
+  if (tutorialCheck === true) {
+    setTimeout(() => RESULTBTN.dispatchEvent(eventClick), 100);
+    setTimeout(() => animation(), 0);
+  } else {
+    animation();
   }
-  // вынести свитчи в отдельную функцию
-  switch (variable.textContent) {
-    case '+':
-      answer = Number(firstTerm.textContent) + Number(secondTerm.textContent);
-      break;
-    case '*':
-      answer = Number(firstTerm.textContent) * Number(secondTerm.textContent);
-      break;
-    case '-':
-      answer = Number(firstTerm.textContent) - Number(secondTerm.textContent);
-      break;
-  };
-  // if (tutorialCheck = true) {
-  //   setTimeout(RESULTBTN.dispatchEvent(eventClick), 2000);
-  // }
-  animation();
+
 };
 
 PLAY.addEventListener('click', () => {
@@ -188,22 +169,23 @@ PLAY.addEventListener('click', () => {
   start();
 })
 
-// TUTORIAL.addEventListener('click', () => {
-//   tutorialCheck = true;
-//   loseCount = 0;
-//   ENDSCORE.textContent = 0;
-//   exercise.style.display = 'flex';
-//   ENDGAME.style.display = 'none';
-// if (musicOn === true) {
-//   playAudio();
-// }
-//   start();
-// });
+TUTORIAL.addEventListener('click', () => {
+  tutorialCheck = true;
+  loseCount = 0;
+  ENDSCORE.textContent = 0;
+  exercise.style.display = 'flex';
+  ENDGAME.style.display = 'none';
+  if (musicOn === true) {
+    playAudio();
+  }
+  start();
+
+});
 
 RESULTBTN.addEventListener('click', () => {
-  // if (tutorialCheck === true) {
-  //   Number(answerUser) = Number(answer);
-  // }
+  if (tutorialCheck === true) {
+    answerUser = Number(answer);
+  }
   if (Number(answer) === Number(answerUser)) {
     soundCheck = true;
     playSound()
@@ -268,4 +250,39 @@ let fullscreen = () => {
   } else if (document.fullscreenEnabled) {
     document.exitFullscreen();
   }
+}
+
+let randomSign = () => {
+  switch (random(0, 3)) {
+    case 0:
+      variable.textContent = '+';
+      break;
+    case 1:
+      variable.textContent = '-';
+      break;
+    case 2:
+      variable.textContent = '*';
+      break;
+  }
+  switch (variable.textContent) {
+    case '+':
+      answer = Number(firstTerm.textContent) + Number(secondTerm.textContent);
+      break;
+    case '*':
+      answer = Number(firstTerm.textContent) * Number(secondTerm.textContent);
+      break;
+    case '-':
+      answer = Number(firstTerm.textContent) - Number(secondTerm.textContent);
+      break;
+  };
+}
+
+END_BTN.addEventListener('click', () => {
+  endGame();
+})
+
+let endGame = () => {
+  loseCount = 2;
+  ENDSCORE.textContent = 0;
+  lose();
 }
