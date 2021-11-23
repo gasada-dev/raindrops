@@ -5,6 +5,7 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: $base-fontsize;
   color: $white-color;
+  user-select: none;
 
   .custom-btn {
     width: 7rem;
@@ -139,6 +140,12 @@ body {
             border: none;
             color: $secondary-color;
             background-color: $white-color;
+
+            &:hover {
+              font-size: 1.5rem;
+              border-radius: 1.2rem;
+              color: $base-color;
+            }
           }
 
           .display {
@@ -177,6 +184,10 @@ body {
             grid-row-end: 6;
             grid-column-start: 3;
             grid-column-end: 4;
+
+            &:hover {
+              font-size: 1.2rem;
+            }
           }
         }
       }
@@ -224,7 +235,9 @@ body {
         .audio {
           text-decoration: underline;
           cursor: pointer;
-          user-select: none;
+          &:hover {
+            color: #ffffff;
+          }
         }
       }
     }

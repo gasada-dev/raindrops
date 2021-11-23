@@ -352,6 +352,10 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 1.7rem;
   color: rgba(255, 255, 255, 0.85);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 body .custom-btn {
@@ -531,6 +535,12 @@ body .main .main__calc .calc .calc__grid .btn {
   background-color: rgba(255, 255, 255, 0.85);
 }
 
+body .main .main__calc .calc .calc__grid .btn:hover {
+  font-size: 1.5rem;
+  border-radius: 1.2rem;
+  color: rgba(0, 132, 165, 0.9);
+}
+
 body .main .main__calc .calc .calc__grid .display {
   color: rgba(0, 132, 165, 0.9);
   background-color: rgba(255, 255, 255, 0.85);
@@ -576,6 +586,10 @@ body .main .main__calc .calc .calc__grid .delete {
   -ms-grid-column: 3;
       grid-column-start: 3;
   grid-column-end: 4;
+}
+
+body .main .main__calc .calc .calc__grid .delete:hover {
+  font-size: 1.2rem;
 }
 
 body .main .menu {
@@ -638,9 +652,9 @@ body .main .end .end__container .end__score--text {
 body .main .end .end__container .audio {
   text-decoration: underline;
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+}
+
+body .main .end .end__container .audio:hover {
+  color: #ffffff;
 }
 /*# sourceMappingURL=style.css.map */

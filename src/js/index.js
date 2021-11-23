@@ -5,11 +5,11 @@
 // иногда выпадают бонусные капли другого цвета, решение выражений в которых полностью очищает игровое поле от других капель
 // сделать волну и  смерть когда капля косается волны
 // в ходе игры скорость падения капель постепенно увеличивается
-// приложение можно развернуть на весь экран
 
 const NUMBERBTNS = document.querySelectorAll('.number');
 const OPERATIONBTNS = document.querySelectorAll('.operation');
 const CLEARBTNS = document.querySelectorAll('.clear');
+const BTN_FULLSCREEN = document.querySelector('.btn-fullscreen');
 const SCORE = document.querySelector('.score__num');
 const MUSIC = document.querySelector('.music');
 const ENDSCORE = document.querySelector('.end__score');
@@ -159,7 +159,7 @@ let start = () => {
       variable.textContent = '*';
       break;
   }
-
+  // вынести свитчи в отдельную функцию
   switch (variable.textContent) {
     case '+':
       answer = Number(firstTerm.textContent) + Number(secondTerm.textContent);
@@ -205,7 +205,7 @@ RESULTBTN.addEventListener('click', () => {
   //   Number(answerUser) = Number(answer);
   // }
   if (Number(answer) === Number(answerUser)) {
-    soundCheck = true
+    soundCheck = true;
     playSound()
     SCORE.textContent = points + Number(SCORE.textContent);
     points++;
@@ -214,7 +214,7 @@ RESULTBTN.addEventListener('click', () => {
   }
   else {
     soundCheck = false;
-    playSound()
+    playSound();
   }
 })
 
@@ -255,5 +255,17 @@ let playSound = () => {
     } else {
       AUDIO_SOUND_FALSE.play();
     }
+  }
+}
+
+BTN_FULLSCREEN.addEventListener('click', () => {
+  fullscreen();
+})
+
+let fullscreen = () => {
+  if (document.fullscreenElement === null) {
+    document.documentElement.requestFullscreen();
+  } else if (document.fullscreenEnabled) {
+    document.exitFullscreen();
   }
 }
