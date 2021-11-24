@@ -5,7 +5,6 @@
 // сделать волну и смерть когда капля косается волны
 // в ходе игры скорость падения капель постепенно увеличивается
 // правильные и неправильные ответы сопровождаются анимацией. Также есть анимация волн
-
 const NUMBERBTNS = document.querySelectorAll('.number');
 const OPERATIONBTNS = document.querySelectorAll('.operation');
 const CLEARBTNS = document.querySelectorAll('.clear');
@@ -35,7 +34,7 @@ let tutorialCheck = false;
 let memoryCurrentNumber = 0;
 let memoryNewNumber = false;
 let memoryPendingOperation = '';
-let answer = 0;
+let answer = undefined;
 let answerUser = 0;
 let loseCount = 0;
 let delayLose = 3000;
@@ -47,6 +46,7 @@ let soundCheck = false;
 let musicOn = false;
 let soundOn = false;
 
+// отрисовка падения шарика
 let animation = () => {
   let drawAnimation = setInterval(() => {
     timePassed = Date.now() - startAnimation;
@@ -65,7 +65,6 @@ let draw = (timePassed) => {
 let random = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
-
 let lose = () => {
   loseCount++;
   if (loseCount > 2) {
@@ -151,7 +150,7 @@ let start = () => {
 
   if (tutorialCheck === true) {
     setTimeout(() => RESULTBTN.dispatchEvent(eventClick), 100);
-    setTimeout(() => animation(), 0);
+    setTimeout(() => animation(), 100);
   } else {
     animation();
   }
@@ -200,7 +199,7 @@ RESULTBTN.addEventListener('click', () => {
   }
 })
 
-
+// Музыка и звуки
 MUSIC.addEventListener('click', () => {
   if (musicOn === true) {
     musicOn = false;
@@ -243,7 +242,7 @@ let playSound = () => {
 BTN_FULLSCREEN.addEventListener('click', () => {
   fullscreen();
 })
-
+// Полноэкранный режим
 let fullscreen = () => {
   if (document.fullscreenElement === null) {
     document.documentElement.requestFullscreen();
@@ -251,7 +250,7 @@ let fullscreen = () => {
     document.exitFullscreen();
   }
 }
-
+// генерация рандомного знака
 let randomSign = () => {
   switch (random(0, 3)) {
     case 0:
@@ -280,9 +279,27 @@ let randomSign = () => {
 END_BTN.addEventListener('click', () => {
   endGame();
 })
-
+//конец игры
 let endGame = () => {
   loseCount = 2;
   ENDSCORE.textContent = 0;
   lose();
 }
+// Игра с клавиатуры
+document.addEventListener('keydown', (e) => {
+  let KEY = document.querySelector(`button[data-key="${e.code}"]`);
+
+  if (KEY.textContent === 'Delete') {
+    id = 'delete';
+    clear(id);
+
+  } else if (KEY.textContent === 'Clear') {
+    id = 'c';
+    clear(id);
+  } else if (KEY.textContent === 'Enter') {
+    RESULTBTN.dispatchEvent(eventClick);
+    PLAY.dispatchEvent(eventClick);
+  } else {
+    numberPress(KEY.textContent);
+  }
+})

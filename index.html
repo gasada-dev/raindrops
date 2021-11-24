@@ -38,8 +38,8 @@
               <source src="./src/audio/wrong.ogg" type="audio/ogg">
               <source src="./src/audio/wrong.wav" type="audio/wav">
             </audio>
-
           </p>
+          <p>При управлении с клавиатуры: detele = backspace, clear = delete</p>
           <div class="end__btns">
             <button alt="Play" class="custom-btn play">Play</button>
             <button alt="How To Play" class="custom-btn tutorial">How To Play</button>
@@ -63,23 +63,25 @@
       <div class="calc">
         <div class="calc__grid">
           <input disabled type="text" class="display" id="display" value="0"></input>
-          <button alt="number 7" type="button" class="btn number">7</button>
-          <button alt="number 8" type="button" class="btn number">8</button>
-          <button alt="number 9" type="button" class="btn number">9</button>
-          <button alt="button clear" type="button" class="btn clear" id="c">Clear</button>
-          <button alt="number 4" type="button" class="btn number">4</button>
-          <button alt="number 5" type="button" class="btn number">5</button>
-          <button alt="number 6" type="button" class="btn number">6</button>
-          <button alt="number 1" type="button" class="btn number">1</button>
-          <button alt="number 2" type="button" class="btn number">2</button>
-          <button alt="number 0" type="button" class="btn number zero" id="zero">0</button>
-          <button alt="number 3" type="button" class="btn number">3</button>
-          <button alt="button delete" type="button" class="btn clear delete" id="delete">Delete</button>
-          <button alt="button result" type="button" class="btn clear operation result" id="result">Enter</button>
+          <button data-key="Numpad7" alt="number 7" type="button" class="btn number">7</button>
+          <button data-key="Numpad8" alt="number 8" type="button" class="btn number">8</button>
+          <button data-key="Numpad9" alt="number 9" type="button" class="btn number">9</button>
+          <button data-key="Delete" alt="button clear" type="button" class="btn clear" id="c">Clear</button>
+          <button data-key="Numpad4" alt="number 4" type="button" class="btn number">4</button>
+          <button data-key="Numpad5" alt="number 5" type="button" class="btn number">5</button>
+          <button data-key="Numpad6" alt="number 6" type="button" class="btn number">6</button>
+          <button data-key="Numpad1" alt="number 1" type="button" class="btn number">1</button>
+          <button data-key="Numpad2" alt="number 2" type="button" class="btn number">2</button>
+          <button data-key="Numpad0" alt="number 0" type="button" class="btn number zero" id="zero">0</button>
+          <button data-key="Numpad3" alt="number 3" type="button" class="btn number">3</button>
+          <button data-key="Backspace" alt="button delete" type="button" class="btn clear delete"
+            id="delete">Delete</button>
+          <button data-key="NumpadEnter" alt="button result" type="button" class="btn clear operation result"
+            id="result">Enter</button>
         </div>
       </div>
       <div class="menu">
-        <button alt="button Options" class="custom-btn btn-options">Options</button>
+        <!-- <button alt="button Options" class="custom-btn btn-options">Options</button> -->
         <button alt="button FullScreen" class="custom-btn btn-fullscreen">FullScreen</button>
         <button alt="button End" class="custom-btn btn-end">End</button>
       </div>
