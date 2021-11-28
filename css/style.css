@@ -351,7 +351,7 @@ template {
 body {
   font-family: "Roboto", sans-serif;
   font-size: 1.7rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.75);
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -377,7 +377,7 @@ body .custom-btn {
   background: rgba(0, 132, 165, 0.9);
   border: none;
   z-index: 1;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 body .custom-btn:after {
@@ -389,8 +389,8 @@ body .custom-btn:after {
   left: 0;
   z-index: -1;
   border-radius: 0.35rem;
-  background-color: rgba(255, 255, 255, 0.85);
-  background-image: linear-gradient(315deg, rgba(255, 255, 255, 0.85) 0%, #9cf6fc 75%);
+  background-color: rgba(255, 255, 255, 0.75);
+  background-image: linear-gradient(315deg, rgba(255, 255, 255, 0.75) 0%, #9cf6fc 75%);
   -webkit-box-shadow: inset 0.15rem 0.15rem 0.15rem 0rem rgba(255, 255, 255, 0.5), 0.45rem 0.5rem 1.2rem 0rem rgba(0, 0, 0, 0.1), 0.25rem 0.25rem 0.3rem 0rem rgba(0, 0, 0, 0.1);
           box-shadow: inset 0.15rem 0.15rem 0.15rem 0rem rgba(255, 255, 255, 0.5), 0.45rem 0.5rem 1.2rem 0rem rgba(0, 0, 0, 0.1), 0.25rem 0.25rem 0.3rem 0rem rgba(0, 0, 0, 0.1);
   -webkit-transition: all 0.3s ease;
@@ -532,7 +532,7 @@ body .main .main__calc .calc .calc__grid .btn {
   border-radius: 0.8rem;
   border: none;
   color: rgba(0, 132, 165, 0.65);
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
 body .main .main__calc .calc .calc__grid .btn:hover {
@@ -543,7 +543,7 @@ body .main .main__calc .calc .calc__grid .btn:hover {
 
 body .main .main__calc .calc .calc__grid .display {
   color: rgba(0, 132, 165, 0.9);
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.75);
   -ms-grid-column: 1;
       grid-column-start: 1;
   grid-column-end: 5;
@@ -642,11 +642,7 @@ body .main .end .end__container .tutorial {
 }
 
 body .main .end .end__container .text-head {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-body .main .end .end__container .end__score--text {
-  display: none;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 body .main .end .end__container .audio {

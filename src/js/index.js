@@ -1,17 +1,19 @@
 // минимальная ширина страницы, при которой приложение отображается корректно – 320 рх
-// набирать и вводить ответ можно не только кликая мышкой, но и при помощи клавиатуры
 // иногда выпадают бонусные капли другого цвета, решение выражений в которых полностью очищает игровое поле от других капель
 
 // сделать волну и смерть когда капля косается волны
 // в ходе игры скорость падения капель постепенно увеличивается
 // правильные и неправильные ответы сопровождаются анимацией. Также есть анимация волн
+
+// сделать счетчик ошибок (доп)
+
 const NUMBERBTNS = document.querySelectorAll('.number');
 const OPERATIONBTNS = document.querySelectorAll('.operation');
 const CLEARBTNS = document.querySelectorAll('.clear');
+const record = document.querySelector('.record');
 const BTN_FULLSCREEN = document.querySelector('.btn-fullscreen');
 const SCORE = document.querySelector('.score__num');
 const MUSIC = document.querySelector('.music');
-const ENDSCORE = document.querySelector('.end__score');
 const PLAY = document.querySelector('.play');
 const ENDGAME = document.querySelector('.end');
 const TEXT_HEAD = document.querySelector('.text-head');
@@ -36,7 +38,7 @@ let memoryNewNumber = false;
 let memoryPendingOperation = '';
 let answer = undefined;
 let answerUser = 0;
-let loseCount = 0;
+let loseCount = 3;
 let delayLose = 3000;
 let startAnimation = Date.now();
 let timePassed;
@@ -69,12 +71,11 @@ let lose = () => {
   loseCount++;
   if (loseCount > 2) {
     TEXT_HEAD.textContent = 'Игра окончена';
-    TEXT_SCORE.style.display = 'block';
     exercise.style.display = 'none';
     ENDGAME.style.display = 'flex';
-    SCORE.textContent = 0;
     points = 10;
     tutorialCheck = false;
+    gameRecord();
   } else {
     start();
   }
@@ -154,12 +155,11 @@ let start = () => {
   } else {
     animation();
   }
-
 };
 
 PLAY.addEventListener('click', () => {
+  SCORE.textContent = 0;
   loseCount = 0;
-  ENDSCORE.textContent = 0;
   exercise.style.display = 'flex';
   ENDGAME.style.display = 'none';
   if (musicOn === true) {
@@ -169,16 +169,15 @@ PLAY.addEventListener('click', () => {
 })
 
 TUTORIAL.addEventListener('click', () => {
+  SCORE.textContent = 0;
   tutorialCheck = true;
   loseCount = 0;
-  ENDSCORE.textContent = 0;
   exercise.style.display = 'flex';
   ENDGAME.style.display = 'none';
   if (musicOn === true) {
     playAudio();
   }
   start();
-
 });
 
 RESULTBTN.addEventListener('click', () => {
@@ -190,7 +189,6 @@ RESULTBTN.addEventListener('click', () => {
     playSound()
     SCORE.textContent = points + Number(SCORE.textContent);
     points++;
-    ENDSCORE.textContent = SCORE.textContent;
     start();
   }
   else {
@@ -282,9 +280,12 @@ END_BTN.addEventListener('click', () => {
 //конец игры
 let endGame = () => {
   loseCount = 2;
-  ENDSCORE.textContent = 0;
+  SCORE.textContent = 0;
   lose();
 }
+
+// поменять else if на switch case
+
 // Игра с клавиатуры
 document.addEventListener('keydown', (e) => {
   let KEY = document.querySelector(`button[data-key="${e.code}"]`);
@@ -298,8 +299,17 @@ document.addEventListener('keydown', (e) => {
     clear(id);
   } else if (KEY.textContent === 'Enter') {
     RESULTBTN.dispatchEvent(eventClick);
-    PLAY.dispatchEvent(eventClick);
+    if (loseCount > 2) {
+      PLAY.dispatchEvent(eventClick);
+    }
   } else {
     numberPress(KEY.textContent);
   }
 })
+
+let gameRecord = () => {
+  if (Number(SCORE.textContent) > Number(record.textContent)) {
+    record.textContent = window.localStorage = SCORE.textContent;
+  }
+}
+record.textContent = window.localStorage;
