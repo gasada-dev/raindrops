@@ -6,12 +6,14 @@
 // правильные и неправильные ответы сопровождаются анимацией. Также есть анимация волн
 
 // сделать счетчик ошибок (доп)
+// исправить баг с рекордом
 
 const NUMBERBTNS = document.querySelectorAll('.number');
 const OPERATIONBTNS = document.querySelectorAll('.operation');
 const CLEARBTNS = document.querySelectorAll('.clear');
 const record = document.querySelector('.record');
 const BTN_FULLSCREEN = document.querySelector('.btn-fullscreen');
+const CALC = document.querySelector('.calc');
 const SCORE = document.querySelector('.score__num');
 const MUSIC = document.querySelector('.music');
 const PLAY = document.querySelector('.play');
@@ -67,6 +69,7 @@ let draw = (timePassed) => {
 let random = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
+
 let lose = () => {
   loseCount++;
   if (loseCount > 2) {
@@ -76,6 +79,7 @@ let lose = () => {
     points = 10;
     tutorialCheck = false;
     gameRecord();
+    CALC.style.display = 'none';
   } else {
     start();
   }
@@ -143,8 +147,8 @@ let clear = (id) => {
 
 let start = () => {
   startAnimation = Date.now();
-  left = random(0, 10) * 5;
-  exercise.style.left = left + 'rem';
+  left = random(1, 15) * 2;
+  exercise.style.left = left + 'vw';
   firstTerm.textContent = random(7, 14);
   secondTerm.textContent = random(0, 7);
   randomSign();
@@ -162,6 +166,8 @@ PLAY.addEventListener('click', () => {
   loseCount = 0;
   exercise.style.display = 'flex';
   ENDGAME.style.display = 'none';
+  CALC.style.display = 'block';
+
   if (musicOn === true) {
     playAudio();
   }
@@ -174,6 +180,8 @@ TUTORIAL.addEventListener('click', () => {
   loseCount = 0;
   exercise.style.display = 'flex';
   ENDGAME.style.display = 'none';
+  CALC.style.display = 'block'; 
+
   if (musicOn === true) {
     playAudio();
   }
@@ -277,33 +285,36 @@ let randomSign = () => {
 END_BTN.addEventListener('click', () => {
   endGame();
 })
-//конец игры
+
 let endGame = () => {
   loseCount = 2;
   SCORE.textContent = 0;
   lose();
 }
 
-// поменять else if на switch case
-
 // Игра с клавиатуры
 document.addEventListener('keydown', (e) => {
   let KEY = document.querySelector(`button[data-key="${e.code}"]`);
-
-  if (KEY.textContent === 'Delete') {
-    id = 'delete';
-    clear(id);
-
-  } else if (KEY.textContent === 'Clear') {
-    id = 'c';
-    clear(id);
-  } else if (KEY.textContent === 'Enter') {
-    RESULTBTN.dispatchEvent(eventClick);
-    if (loseCount > 2) {
-      PLAY.dispatchEvent(eventClick);
+  switch (KEY.textContent) {
+    case 'Delete': {
+      id = 'delete';
+      clear(id);
+      break;
     }
-  } else {
-    numberPress(KEY.textContent);
+    case 'Clear': {
+      id = 'c';
+      clear(id);
+      break;
+    }
+    case 'Enter': {
+      RESULTBTN.dispatchEvent(eventClick);
+      if (loseCount > 2) {
+        PLAY.dispatchEvent(eventClick);
+      }
+      break;
+    }
+    default:
+      numberPress(KEY.textContent);
   }
 })
 
