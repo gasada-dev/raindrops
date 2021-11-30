@@ -147,7 +147,7 @@ let clear = (id) => {
 
 let start = () => {
   startAnimation = Date.now();
-  left = random(1, 15) * 2;
+  left = random(1, 50);
   exercise.style.left = left + 'vw';
   firstTerm.textContent = random(7, 14);
   secondTerm.textContent = random(0, 7);
@@ -180,7 +180,7 @@ TUTORIAL.addEventListener('click', () => {
   loseCount = 0;
   exercise.style.display = 'flex';
   ENDGAME.style.display = 'none';
-  CALC.style.display = 'block'; 
+  CALC.style.display = 'block';
 
   if (musicOn === true) {
     playAudio();
@@ -320,7 +320,13 @@ document.addEventListener('keydown', (e) => {
 
 let gameRecord = () => {
   if (Number(SCORE.textContent) > Number(record.textContent)) {
-    record.textContent = window.localStorage = SCORE.textContent;
+    record.localStorage = Number(SCORE.textContent);
+    record.textContent = record.localStorage;
   }
 }
-record.textContent = window.localStorage;
+
+if (record.localStorage === undefined) {
+  record.textContent = 0;
+} else {
+  record.textContent = record.localStorage;
+}

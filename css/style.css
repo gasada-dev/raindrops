@@ -638,6 +638,10 @@ body .main .end .end__container {
           flex: 1 1 auto;
 }
 
+body .main .end .end__container .info-keyboard {
+  display: none;
+}
+
 body .main .end .end__container .tutorial {
   width: 10rem;
 }
@@ -659,11 +663,85 @@ body .main .end .end__container .audio:hover {
   body {
     font-size: 1.4rem;
   }
-}
-
-@media (max-width: 768px) {
-  body {
-    font-size: 1.2rem;
+  body .custom-btn {
+    width: 4rem;
+    height: 2rem;
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 500;
+  }
+  body .main {
+    background: #949494;
+  }
+  body .main .main__game .game {
+    min-height: 80vh;
+    min-width: 40vw;
+  }
+  body .main .main__game .exercise {
+    top: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+    border: 0.8px solid rgba(255, 255, 200, 0.4);
+    font-size: 0.9rem;
+  }
+  body .main .main__game .exercise .exercise__container {
+    padding: 0.95rem 0.2rem 0 0.2rem;
+  }
+  body .main .main__game .ocean {
+    height: 2rem;
+  }
+  body .main .main__calc {
+    padding: 0.25rem 0.5rem 0.25rem 0;
+    min-width: 30vw;
+  }
+  body .main .main__calc .score {
+    font-size: 1.6rem;
+  }
+  body .main .main__calc .calc {
+    height: 25rem;
+    width: 16rem;
+    border-radius: 0.7rem;
+  }
+  body .main .main__calc .calc .calc__grid {
+    padding: 0.25rem 0.25rem;
+    row-gap: 0.1rem;
+    -webkit-column-gap: 0.1rem;
+            column-gap: 0.1rem;
+  }
+  body .main .main__calc .calc .calc__grid .btn {
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  body .main .main__calc .calc .calc__grid .btn:hover {
+    font-size: 0.9rem;
+  }
+  body .main .main__calc .calc .calc__grid .display {
+    font-size: 1.8rem;
+    padding: 0.25rem 0.25rem;
+  }
+  body .main .main__calc .calc .calc__grid .delete {
+    font-size: 0.7rem;
+  }
+  body .main .main__calc .calc .calc__grid .delete:hover {
+    font-size: 1rem;
+  }
+  body .main .menu .btn-end {
+    width: 4rem;
+  }
+  body .main .menu .btn-fullscreen {
+    width: 7rem;
+  }
+  body .main .end {
+    top: 12.5vh;
+    left: 15vw;
+    width: 50vw;
+    height: 75vh;
+  }
+  body .main .end .end__container {
+    padding: 0 0.2rem;
+  }
+  body .main .end .end__container .tutorial {
+    width: 7rem;
   }
 }
 
@@ -700,6 +778,7 @@ body .main .end .end__container .audio:hover {
   }
   body .main .main__calc {
     padding: 0.25rem 0.5rem 0.25rem 0;
+    min-width: 60vw;
   }
   body .main .main__calc .score {
     font-size: 1.6rem;
@@ -707,6 +786,7 @@ body .main .end .end__container .audio:hover {
   body .main .main__calc .calc {
     height: 20rem;
     width: 12rem;
+    border-radius: 0.5rem;
   }
   body .main .main__calc .calc .calc__grid {
     padding: 0.25rem 0.25rem;
@@ -719,7 +799,7 @@ body .main .end .end__container .audio:hover {
     font-weight: 700;
   }
   body .main .main__calc .calc .calc__grid .btn:hover {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
   body .main .main__calc .calc .calc__grid .display {
     font-size: 1.8rem;
@@ -729,7 +809,7 @@ body .main .end .end__container .audio:hover {
     font-size: 0.7rem;
   }
   body .main .main__calc .calc .calc__grid .delete:hover {
-    font-size: 1rem;
+    font-size: 0.7rem;
   }
   body .main .menu .btn-end {
     width: 3.5rem;
@@ -738,7 +818,7 @@ body .main .end .end__container .audio:hover {
     width: 6rem;
   }
   body .main .end {
-    top: 10vh;
+    top: 20vh;
     left: 15vw;
     width: 70vw;
     height: 60vh;
@@ -746,11 +826,14 @@ body .main .end .end__container .audio:hover {
   body .main .end .end__container {
     padding: 0 0.2rem;
   }
-  body .main .end .end__container .info-keyboard {
-    display: none;
-  }
   body .main .end .end__container .tutorial {
     width: 6rem;
+  }
+}
+
+@media screen {
+  body .main .end .end__container .info-keyboard {
+    display: inline;
   }
 }
 /*# sourceMappingURL=style.css.map */
