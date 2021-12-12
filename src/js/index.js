@@ -1,17 +1,7 @@
-// минимальная ширина страницы, при которой приложение отображается корректно – 320 рх
-// иногда выпадают бонусные капли другого цвета, решение выражений в которых полностью очищает игровое поле от других капель
-
-// сделать волну и смерть когда капля косается волны
-// в ходе игры скорость падения капель постепенно увеличивается
-// правильные и неправильные ответы сопровождаются анимацией. Также есть анимация волн
-
-// сделать счетчик ошибок (доп)
-// исправить баг с рекордом
-
 const NUMBERBTNS = document.querySelectorAll('.number');
 const OPERATIONBTNS = document.querySelectorAll('.operation');
 const CLEARBTNS = document.querySelectorAll('.clear');
-const record = document.querySelector('.record');
+const SCOREEND = document.querySelector('.score__end--num');
 const BTN_FULLSCREEN = document.querySelector('.btn-fullscreen');
 const CALC = document.querySelector('.calc');
 const SCORE = document.querySelector('.score__num');
@@ -73,13 +63,13 @@ let random = (min, max) => {
 let lose = () => {
   loseCount++;
   if (loseCount > 2) {
+    SCOREEND.textContent = SCORE.textContent;
+    CALC.style.display = 'none';
     TEXT_HEAD.textContent = 'Игра окончена';
     exercise.style.display = 'none';
     ENDGAME.style.display = 'flex';
     points = 10;
     tutorialCheck = false;
-    gameRecord();
-    CALC.style.display = 'none';
   } else {
     start();
   }
@@ -147,7 +137,7 @@ let clear = (id) => {
 
 let start = () => {
   startAnimation = Date.now();
-  left = random(1, 50);
+  left = random(1, 23);
   exercise.style.left = left + 'vw';
   firstTerm.textContent = random(7, 14);
   secondTerm.textContent = random(0, 7);
@@ -163,6 +153,7 @@ let start = () => {
 
 PLAY.addEventListener('click', () => {
   SCORE.textContent = 0;
+  SCOREEND.textContent = 0;
   loseCount = 0;
   exercise.style.display = 'flex';
   ENDGAME.style.display = 'none';
@@ -170,12 +161,15 @@ PLAY.addEventListener('click', () => {
 
   if (musicOn === true) {
     playAudio();
+  } else {
+    pauseAudio();
   }
   start();
 })
 
 TUTORIAL.addEventListener('click', () => {
   SCORE.textContent = 0;
+  SCOREEND.textContent = 0;
   tutorialCheck = true;
   loseCount = 0;
   exercise.style.display = 'flex';
@@ -184,6 +178,8 @@ TUTORIAL.addEventListener('click', () => {
 
   if (musicOn === true) {
     playAudio();
+  } else {
+    pauseAudio();
   }
   start();
 });
@@ -193,16 +189,18 @@ RESULTBTN.addEventListener('click', () => {
     answerUser = Number(answer);
   }
   if (Number(answer) === Number(answerUser)) {
+    CALC.style.backgroundColor = 'rgba(255, 255, 255, 0.75)';
     soundCheck = true;
-    playSound()
     SCORE.textContent = points + Number(SCORE.textContent);
     points++;
     start();
   }
   else {
     soundCheck = false;
-    playSound();
+    CALC.style.backgroundColor = 'red';
   }
+  setTimeout(() => CALC.style.backgroundColor = 'rgba(0, 132, 165, 0.65)', 200);
+  playSound();
 })
 
 // Музыка и звуки
@@ -287,7 +285,7 @@ END_BTN.addEventListener('click', () => {
 })
 
 let endGame = () => {
-  loseCount = 2;
+  loseCount = 3;
   SCORE.textContent = 0;
   lose();
 }
@@ -318,15 +316,3 @@ document.addEventListener('keydown', (e) => {
   }
 })
 
-let gameRecord = () => {
-  if (Number(SCORE.textContent) > Number(record.textContent)) {
-    record.localStorage = Number(SCORE.textContent);
-    record.textContent = record.localStorage;
-  }
-}
-
-if (record.localStorage === undefined) {
-  record.textContent = 0;
-} else {
-  record.textContent = record.localStorage;
-}

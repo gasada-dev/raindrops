@@ -510,6 +510,8 @@ body .main .main__calc .calc {
   width: 20rem;
   background-color: rgba(0, 132, 165, 0.65);
   border-radius: 1.2rem;
+  -webkit-transition: all 0.15s ease;
+  transition: all 0.15s ease;
 }
 
 body .main .main__calc .calc .calc__grid {
@@ -597,8 +599,9 @@ body .main .menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
 }
 
 body .main .menu .btn-end {
@@ -675,7 +678,7 @@ body .main .end .end__container .audio:hover {
   }
   body .main .main__game .game {
     min-height: 80vh;
-    min-width: 40vw;
+    min-width: 30vw;
   }
   body .main .main__game .exercise {
     top: 0.5rem;
@@ -692,7 +695,6 @@ body .main .end .end__container .audio:hover {
   }
   body .main .main__calc {
     padding: 0.25rem 0.5rem 0.25rem 0;
-    min-width: 30vw;
   }
   body .main .main__calc .score {
     font-size: 1.6rem;
@@ -703,7 +705,7 @@ body .main .end .end__container .audio:hover {
     border-radius: 0.7rem;
   }
   body .main .main__calc .calc .calc__grid {
-    padding: 0.25rem 0.25rem;
+    padding: 0.25rem;
     row-gap: 0.1rem;
     -webkit-column-gap: 0.1rem;
             column-gap: 0.1rem;
@@ -761,7 +763,7 @@ body .main .end .end__container .audio:hover {
   }
   body .main .main__game .game {
     min-height: 80vh;
-    min-width: 40vw;
+    min-width: 30vw;
   }
   body .main .main__game .exercise {
     top: 0.5rem;
@@ -777,8 +779,7 @@ body .main .end .end__container .audio:hover {
     height: 2rem;
   }
   body .main .main__calc {
-    padding: 0.25rem 0.5rem 0.25rem 0;
-    min-width: 60vw;
+    padding: 0.25rem 0.25rem 0.25rem 0;
   }
   body .main .main__calc .score {
     font-size: 1.6rem;
@@ -789,7 +790,7 @@ body .main .end .end__container .audio:hover {
     border-radius: 0.5rem;
   }
   body .main .main__calc .calc .calc__grid {
-    padding: 0.25rem 0.25rem;
+    padding: 0.25rem;
     row-gap: 0.1rem;
     -webkit-column-gap: 0.1rem;
             column-gap: 0.1rem;
@@ -812,10 +813,10 @@ body .main .end .end__container .audio:hover {
     font-size: 0.7rem;
   }
   body .main .menu .btn-end {
-    width: 3.5rem;
+    width: 3rem;
   }
   body .main .menu .btn-fullscreen {
-    width: 6rem;
+    width: 5rem;
   }
   body .main .end {
     top: 20vh;

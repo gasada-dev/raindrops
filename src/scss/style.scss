@@ -123,6 +123,7 @@ body {
         width: 20rem;
         background-color: $secondary-color;
         border-radius: 1.2rem;
+        transition: all 0.15s ease;
 
         .calc__grid {
           padding: 1.3rem 0.7rem;
@@ -196,7 +197,7 @@ body {
 
     .menu {
       display: flex;
-      justify-content: space-around;
+      justify-content: right;
 
       .btn-end {
         width: 5rem;
@@ -223,7 +224,7 @@ body {
         text-align: center;
         flex: 1 1 auto;
 
-        .info-keyboard{
+        .info-keyboard {
           display: none;
         }
 
@@ -262,7 +263,7 @@ body {
       .main__game {
         .game {
           min-height: 80vh;
-          min-width: 40vw;
+          min-width: 30vw;
         }
         .exercise {
           top: 0.5rem;
@@ -280,16 +281,15 @@ body {
       }
       .main__calc {
         padding: 0.25rem 0.5rem 0.25rem 0;
-        min-width: 30vw;
         .score {
           font-size: 1.6rem;
         }
         .calc {
           height: 25rem;
-          width: 16rem;  
+          width: 16rem;
           border-radius: 0.7rem;
           .calc__grid {
-            padding: 0.25rem 0.25rem;
+            padding: 0.25rem;
             row-gap: 0.1rem;
             column-gap: 0.1rem;
             .btn {
@@ -302,7 +302,7 @@ body {
             .display {
               font-size: 1.8rem;
               padding: 0.25rem 0.25rem;
-            }    
+            }
             .delete {
               font-size: 0.7rem;
               &:hover {
@@ -333,7 +333,6 @@ body {
         }
       }
     }
-
   }
 }
 
@@ -353,7 +352,7 @@ body {
       .main__game {
         .game {
           min-height: 80vh;
-          min-width: 40vw;
+          min-width: 30vw;
         }
         .exercise {
           top: 0.5rem;
@@ -370,18 +369,16 @@ body {
         }
       }
       .main__calc {
-        padding: 0.25rem 0.5rem 0.25rem 0;
-        min-width: 60vw;
-
+        padding: 0.25rem 0.25rem 0.25rem 0;
         .score {
           font-size: 1.6rem;
         }
         .calc {
           height: 20rem;
-          width: 12rem;  
+          width: 12rem;
           border-radius: 0.5rem;
           .calc__grid {
-            padding: 0.25rem 0.25rem;
+            padding: 0.25rem;
             row-gap: 0.1rem;
             column-gap: 0.1rem;
             .btn {
@@ -394,7 +391,7 @@ body {
             .display {
               font-size: 1.8rem;
               padding: 0.25rem 0.25rem;
-            }    
+            }
             .delete {
               font-size: 0.7rem;
               &:hover {
@@ -406,10 +403,10 @@ body {
       }
       .menu {
         .btn-end {
-          width: 3.5rem;
+          width: 3rem;
         }
         .btn-fullscreen {
-          width: 6rem;
+          width: 5rem;
         }
       }
       .end {
@@ -425,15 +422,14 @@ body {
         }
       }
     }
-
   }
 }
-@media screen{
+@media screen {
   body {
     .main {
       .end {
         .end__container {
-          .info-keyboard{
+          .info-keyboard {
             display: inline;
           }
         }
