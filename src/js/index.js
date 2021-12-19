@@ -51,9 +51,40 @@ let animation = () => {
     draw(timePassed);
   }, 10)
 }
-
+// отрисовка падения и уровни сложности
 let draw = (timePassed) => {
-  exercise.style.top = timePassed / 7 + 'px';
+  let difficult = 0;
+  if (Number(SCORE.textContent) < 25) {
+    difficult = 0;
+
+  } else if (Number(SCORE.textContent) < 75) {
+    difficult = 1;
+
+  } else if (Number(SCORE.textContent) < 125) {
+    difficult = 2;
+
+  } else if (Number(SCORE.textContent) < 350) {
+    difficult = 3;
+  }
+
+  switch (difficult) {
+    case 0:
+      speedDown = 7
+      break;
+
+    case 1:
+      speedDown = 6
+      break;
+
+    case 2:
+      speedDown = 5.4
+      break;
+
+    default:
+      speedDown = 4.2;
+      break;
+  }
+  exercise.style.top = timePassed / speedDown + 'px';
 };
 
 let random = (min, max) => {
@@ -246,6 +277,7 @@ let playSound = () => {
 BTN_FULLSCREEN.addEventListener('click', () => {
   fullscreen();
 })
+
 // Полноэкранный режим
 let fullscreen = () => {
   if (document.fullscreenElement === null) {
@@ -254,6 +286,7 @@ let fullscreen = () => {
     document.exitFullscreen();
   }
 }
+
 // генерация рандомного знака
 let randomSign = () => {
   switch (random(0, 3)) {
@@ -315,4 +348,3 @@ document.addEventListener('keydown', (e) => {
       numberPress(KEY.textContent);
   }
 })
-
