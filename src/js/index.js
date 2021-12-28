@@ -1,6 +1,7 @@
 const NUMBERBTNS = document.querySelectorAll('.number');
 const OPERATIONBTNS = document.querySelectorAll('.operation');
 const CLEARBTNS = document.querySelectorAll('.clear');
+const OCEAN = document.querySelector('.ocean');
 const SCOREEND = document.querySelector('.score__end--num');
 const BTN_FULLSCREEN = document.querySelector('.btn-fullscreen');
 const CALC = document.querySelector('.calc');
@@ -31,7 +32,6 @@ let memoryPendingOperation = '';
 let answer = undefined;
 let answerUser = 0;
 let loseCount = 3;
-let delayLose = 3000;
 let startAnimation = Date.now();
 let timePassed;
 let points = 10;
@@ -44,10 +44,6 @@ let soundOn = false;
 let animation = () => {
   let drawAnimation = setInterval(() => {
     timePassed = Date.now() - startAnimation;
-    if (timePassed > delayLose) {
-      clearInterval(drawAnimation);
-      lose();
-    }
     draw(timePassed);
   }, 10)
 }
@@ -69,22 +65,22 @@ let draw = (timePassed) => {
 
   switch (difficult) {
     case 0:
-      speedDown = 7
+      speedDown = 70;
       break;
 
     case 1:
-      speedDown = 6
+      speedDown = 65;
       break;
 
     case 2:
-      speedDown = 5.4
+      speedDown = 60;
       break;
 
     default:
-      speedDown = 4.2;
+      speedDown = 50;
       break;
   }
-  exercise.style.top = timePassed / speedDown + 'px';
+  exercise.style.top = timePassed / speedDown + 'vh';
 };
 
 let random = (min, max) => {
@@ -95,10 +91,7 @@ let lose = () => {
   loseCount++;
   if (loseCount > 2) {
     SCOREEND.textContent = SCORE.textContent;
-    CALC.style.display = 'none';
-    TEXT_HEAD.textContent = 'Игра окончена';
-    exercise.style.display = 'none';
-    ENDGAME.style.display = 'flex';
+    hideHtmlDiv();
     points = 10;
     tutorialCheck = false;
   } else {
@@ -173,7 +166,7 @@ let start = () => {
   firstTerm.textContent = random(7, 14);
   secondTerm.textContent = random(0, 7);
   randomSign();
-
+  CheckLoseFunc();
   if (tutorialCheck === true) {
     setTimeout(() => RESULTBTN.dispatchEvent(eventClick), 100);
     setTimeout(() => animation(), 100);
@@ -186,9 +179,7 @@ PLAY.addEventListener('click', () => {
   SCORE.textContent = 0;
   SCOREEND.textContent = 0;
   loseCount = 0;
-  exercise.style.display = 'flex';
-  ENDGAME.style.display = 'none';
-  CALC.style.display = 'block';
+  showHtmlDiv();
 
   if (musicOn === true) {
     playAudio();
@@ -203,9 +194,7 @@ TUTORIAL.addEventListener('click', () => {
   SCOREEND.textContent = 0;
   tutorialCheck = true;
   loseCount = 0;
-  exercise.style.display = 'flex';
-  ENDGAME.style.display = 'none';
-  CALC.style.display = 'block';
+  showHtmlDiv();
 
   if (musicOn === true) {
     playAudio();
@@ -348,3 +337,32 @@ document.addEventListener('keydown', (e) => {
       numberPress(KEY.textContent);
   }
 })
+
+let hideHtmlDiv = () => {
+  CALC.style.display = 'none';
+  TEXT_HEAD.textContent = 'Игра окончена';
+  exercise.style.display = 'none';
+  ENDGAME.style.display = 'flex';
+  OCEAN.style.display = 'none';
+}
+
+let showHtmlDiv = () => {
+  exercise.style.display = 'flex';
+  ENDGAME.style.display = 'none';
+  CALC.style.display = 'block';
+  OCEAN.style.display = 'block';
+}
+
+let CheckLoseFunc = () => {
+
+  let calcHeiht = setInterval(() => {
+    if (OCEAN.offsetTop - exercise.offsetTop < 40) {
+      lose();
+      console.log('end');
+    }
+  }, 10);
+
+  setTimeout(() => {
+    clearInterval(calcHeiht);
+  }, 7000);
+}
