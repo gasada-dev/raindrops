@@ -43,14 +43,17 @@ body {
       0.25rem 0.25rem 0.3rem 0rem rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
   }
+
   .custom-btn:hover {
     color: #000;
   }
+
   .custom-btn:hover:after {
     top: auto;
     bottom: 0;
     height: 100%;
   }
+
   .custom-btn:active {
     top: 0.15rem;
   }
@@ -60,7 +63,6 @@ body {
     flex-direction: row;
     justify-content: space-between;
     flex: 1 1;
-    //background: url(../src/img/1.jpg) no-repeat;
     background-color: rgb(150, 150, 150);
     background-size: cover;
     min-width: 100vw;
@@ -72,8 +74,54 @@ body {
       flex: 1 1;
 
       .game {
-        min-height: 85vh;
+        min-height: 100vh;
         min-width: 60vw;
+
+        .ocean {
+          display: none;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          overflow: hidden;
+          width: 100%;
+
+          .waves {
+            position: relative;
+            width: 100%;
+            height: 15vh;
+            margin-bottom: -7px;
+            min-height: 100px;
+            max-height: 150px;
+
+            .parallax > use {
+              animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+            }
+            .parallax > use:nth-child(1) {
+              animation-delay: -2s;
+              animation-duration: 7s;
+            }
+            .parallax > use:nth-child(2) {
+              animation-delay: -3s;
+              animation-duration: 10s;
+            }
+            .parallax > use:nth-child(3) {
+              animation-delay: -4s;
+              animation-duration: 13s;
+            }
+            .parallax > use:nth-child(4) {
+              animation-delay: -5s;
+              animation-duration: 20s;
+            }
+            @keyframes move-forever {
+              0% {
+                transform: translate3d(-90px, 0, 0);
+              }
+              100% {
+                transform: translate3d(85px, 0, 0);
+              }
+            }
+          }
+        }
       }
 
       .exercise {
@@ -96,60 +144,12 @@ body {
           padding: 1.5rem 0.2rem 0 0.2rem;
         }
       }
-
-      .ocean {
-        display: none;
-        position: relative;
-        bottom: 3rem;
-        overflow: hidden;
-        width: 100%;
-
-        .waves {
-          position:relative;
-          width: 100%;
-          height:15vh;
-          margin-bottom:-7px; /*Fix for safari gap*/
-          min-height:100px;
-          max-height:150px;
-
-          .parallax > use {
-            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
-          }
-          .parallax > use:nth-child(1) {
-            animation-delay: -2s;
-            animation-duration: 7s;
-          }
-          .parallax > use:nth-child(2) {
-            animation-delay: -3s;
-            animation-duration: 10s;
-          }
-          .parallax > use:nth-child(3) {
-            animation-delay: -4s;
-            animation-duration: 13s;
-          }
-          .parallax > use:nth-child(4) {
-            animation-delay: -5s;
-            animation-duration: 20s;
-          }
-          @keyframes move-forever {
-            0% {
-             transform: translate3d(-90px,0,0);
-            }
-            100% { 
-              transform: translate3d(85px,0,0);
-            }
-          }
-        }
-        
-
-      }
     }
 
     .main__calc {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      background: rgba(255, 255, 255, 0);
       padding: 1rem 1rem;
 
       .score {
@@ -289,8 +289,7 @@ body {
   }
 }
 
-@media (max-width: 1024px) {
-  // ноут
+@media (max-width: 1023px) {
   body {
     font-size: 1.4rem;
     .custom-btn {
@@ -304,7 +303,6 @@ body {
       background: rgb(148, 148, 148);
       .main__game {
         .game {
-          min-height: 80vh;
           min-width: 30vw;
         }
         .exercise {
@@ -313,6 +311,7 @@ body {
           height: 3rem;
           border: 0.8px solid rgba(255, 255, 200, 0.4);
           font-size: 0.9rem;
+          
           .exercise__container {
             padding: 0.95rem 0.2rem 0 0.2rem;
           }
@@ -379,7 +378,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  //телефон
   body {
     font-size: 1.1rem;
     .custom-btn {
@@ -393,8 +391,15 @@ body {
       background: rgb(148, 148, 148);
       .main__game {
         .game {
-          min-height: 80vh;
           min-width: 30vw;
+          .ocean {
+            bottom: 0;
+            height: 5rem;
+            .waves {
+              height: 5rem;
+              min-height: 5rem;
+            }
+          }
         }
         .exercise {
           top: 0.5rem;
@@ -404,14 +409,6 @@ body {
           font-size: 0.9rem;
           .exercise__container {
             padding: 0.95rem 0.2rem 0 0.2rem;
-          }
-        }
-        .ocean {
-          height: 2rem;
-
-          .waves {
-            height:40px;
-            min-height:40px;
           }
         }
       }

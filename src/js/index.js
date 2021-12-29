@@ -166,7 +166,7 @@ let start = () => {
   firstTerm.textContent = random(7, 14);
   secondTerm.textContent = random(0, 7);
   randomSign();
-  CheckLoseFunc();
+  CheckLose();
   if (tutorialCheck === true) {
     setTimeout(() => RESULTBTN.dispatchEvent(eventClick), 100);
     setTimeout(() => animation(), 100);
@@ -353,14 +353,13 @@ let showHtmlDiv = () => {
   OCEAN.style.display = 'block';
 }
 
-let CheckLoseFunc = () => {
+let CheckLose = () => {
 
   let calcHeiht = setInterval(() => {
     if (OCEAN.offsetTop - exercise.offsetTop < 40) {
       lose();
-      console.log('end');
     }
-  }, 10);
+  }, 25);
 
   setTimeout(() => {
     clearInterval(calcHeiht);

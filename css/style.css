@@ -445,8 +445,81 @@ body .main .main__game {
 }
 
 body .main .main__game .game {
-  min-height: 85vh;
+  min-height: 100vh;
   min-width: 60vw;
+}
+
+body .main .main__game .game .ocean {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+body .main .main__game .game .ocean .waves {
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  margin-bottom: -7px;
+  min-height: 100px;
+  max-height: 150px;
+}
+
+body .main .main__game .game .ocean .waves .parallax > use {
+  -webkit-animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+          animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+body .main .main__game .game .ocean .waves .parallax > use:nth-child(1) {
+  -webkit-animation-delay: -2s;
+          animation-delay: -2s;
+  -webkit-animation-duration: 7s;
+          animation-duration: 7s;
+}
+
+body .main .main__game .game .ocean .waves .parallax > use:nth-child(2) {
+  -webkit-animation-delay: -3s;
+          animation-delay: -3s;
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
+}
+
+body .main .main__game .game .ocean .waves .parallax > use:nth-child(3) {
+  -webkit-animation-delay: -4s;
+          animation-delay: -4s;
+  -webkit-animation-duration: 13s;
+          animation-duration: 13s;
+}
+
+body .main .main__game .game .ocean .waves .parallax > use:nth-child(4) {
+  -webkit-animation-delay: -5s;
+          animation-delay: -5s;
+  -webkit-animation-duration: 20s;
+          animation-duration: 20s;
+}
+
+@-webkit-keyframes move-forever {
+  0% {
+    -webkit-transform: translate3d(-90px, 0, 0);
+            transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(85px, 0, 0);
+            transform: translate3d(85px, 0, 0);
+  }
+}
+
+@keyframes move-forever {
+  0% {
+    -webkit-transform: translate3d(-90px, 0, 0);
+            transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(85px, 0, 0);
+            transform: translate3d(85px, 0, 0);
+  }
 }
 
 body .main .main__game .exercise {
@@ -476,79 +549,6 @@ body .main .main__game .exercise .exercise__container {
   padding: 1.5rem 0.2rem 0 0.2rem;
 }
 
-body .main .main__game .ocean {
-  display: none;
-  position: relative;
-  bottom: 3rem;
-  overflow: hidden;
-  width: 100%;
-}
-
-body .main .main__game .ocean .waves {
-  position: relative;
-  width: 100%;
-  height: 15vh;
-  margin-bottom: -7px;
-  /*Fix for safari gap*/
-  min-height: 100px;
-  max-height: 150px;
-}
-
-body .main .main__game .ocean .waves .parallax > use {
-  -webkit-animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
-          animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
-}
-
-body .main .main__game .ocean .waves .parallax > use:nth-child(1) {
-  -webkit-animation-delay: -2s;
-          animation-delay: -2s;
-  -webkit-animation-duration: 7s;
-          animation-duration: 7s;
-}
-
-body .main .main__game .ocean .waves .parallax > use:nth-child(2) {
-  -webkit-animation-delay: -3s;
-          animation-delay: -3s;
-  -webkit-animation-duration: 10s;
-          animation-duration: 10s;
-}
-
-body .main .main__game .ocean .waves .parallax > use:nth-child(3) {
-  -webkit-animation-delay: -4s;
-          animation-delay: -4s;
-  -webkit-animation-duration: 13s;
-          animation-duration: 13s;
-}
-
-body .main .main__game .ocean .waves .parallax > use:nth-child(4) {
-  -webkit-animation-delay: -5s;
-          animation-delay: -5s;
-  -webkit-animation-duration: 20s;
-          animation-duration: 20s;
-}
-
-@-webkit-keyframes move-forever {
-  0% {
-    -webkit-transform: translate3d(-90px, 0, 0);
-            transform: translate3d(-90px, 0, 0);
-  }
-  100% {
-    -webkit-transform: translate3d(85px, 0, 0);
-            transform: translate3d(85px, 0, 0);
-  }
-}
-
-@keyframes move-forever {
-  0% {
-    -webkit-transform: translate3d(-90px, 0, 0);
-            transform: translate3d(-90px, 0, 0);
-  }
-  100% {
-    -webkit-transform: translate3d(85px, 0, 0);
-            transform: translate3d(85px, 0, 0);
-  }
-}
-
 body .main .main__calc {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -560,7 +560,6 @@ body .main .main__calc {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background: rgba(255, 255, 255, 0);
   padding: 1rem 1rem;
 }
 
@@ -729,7 +728,7 @@ body .main .end .end__container .audio:hover {
   color: #ffffff;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   body {
     font-size: 1.4rem;
   }
@@ -744,7 +743,6 @@ body .main .end .end__container .audio:hover {
     background: #949494;
   }
   body .main .main__game .game {
-    min-height: 80vh;
     min-width: 30vw;
   }
   body .main .main__game .exercise {
@@ -829,8 +827,15 @@ body .main .end .end__container .audio:hover {
     background: #949494;
   }
   body .main .main__game .game {
-    min-height: 80vh;
     min-width: 30vw;
+  }
+  body .main .main__game .game .ocean {
+    bottom: 0;
+    height: 5rem;
+  }
+  body .main .main__game .game .ocean .waves {
+    height: 5rem;
+    min-height: 5rem;
   }
   body .main .main__game .exercise {
     top: 0.5rem;
@@ -841,13 +846,6 @@ body .main .end .end__container .audio:hover {
   }
   body .main .main__game .exercise .exercise__container {
     padding: 0.95rem 0.2rem 0 0.2rem;
-  }
-  body .main .main__game .ocean {
-    height: 2rem;
-  }
-  body .main .main__game .ocean .waves {
-    height: 40px;
-    min-height: 40px;
   }
   body .main .main__calc {
     padding: 0.25rem 0.25rem 0.25rem 0;
